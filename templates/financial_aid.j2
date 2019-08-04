@@ -1,0 +1,48 @@
+Hi {{ receiver_name }},
+
+（中文版在下方）(Chinese version below)
+
+Thank you for applying for a Financial Aid grant.
+
+Grant Package
+=============
+{% if travel_fee %}* Travel Compensation: NT${{ "{:,.0f}".format(travel_fee) }} {% endif %}
+{% if acc_days %}* Accommodation: {{ acc_days }} days ({{ acc_dates }}){% endif %}
+{% if has_ticket %}* Registration at a reduced rate of NT$ {{ "{:,.0f}".format(ticket_price) }} (We will send you the promote code later on.){% endif %}
+
+Grant Acceptees
+===============
+If you are accepting the grant, please continue reading.
+
+{% if travel_fee %}* Be sure to keep the invoice and related proofs (tickets, boarding passes, and a copy of your passport), and provide them during the conference. PyCon Taiwan holds the rights to cancel your compensation if you fail to provide appropriate documentation.{% endif %}
+{% if acc_days %}* To book the room for you, you'll have to fill in your information in the following link before 23:30 AoE, 31 July 2019
+{{ acc_form_link }}{% endif %}
+{% if has_ticket %}* Please DO NOT buy the individual ticket before we send you the promote code.{% endif %}
+
+We hope to see you at PyCon TW!
+
+
+
+感謝您申請財務補助。
+
+補助項目
+=============
+{% if travel_fee %}* 交通: 新台幣 {{ "{:,.0f}".format(travel_fee) }} 元{% endif %}
+{% if acc_days %}* 住宿: {{ acc_days }} 天 ({{ acc_dates }}){% endif %}
+{% if has_ticket %}* 門票折扣價: 新台幣 {{ "{:,.0f}".format(ticket_price) }} 元 (邀請碼將於之後寄出){% endif %}
+
+同意補助
+===============
+如果您接受補助，請注意下列事項
+
+{% if travel_fee %}* 如搭乘大眾交通工具例如高鐵或是台鐵火車請保留車票票根、如搭乘飛機請提供電子機票、登機證與護照影本。如果無法在當天提供憑據，大會有權取消補助。{% endif %}
+{% if acc_days %}* 為了協助您預訂房間，請您在 2019/7/31 23:30 AoE 前，於下列表單填入您的住宿資料
+{{ acc_form_link }}{% endif %}
+{% if has_ticket %}* 請勿在我們將邀請碼寄出前購買門票{% endif %}
+
+期待在 PyCon TW 與您相見
+
+
+Best regards,
+{{ sender }}
+{{ team }}

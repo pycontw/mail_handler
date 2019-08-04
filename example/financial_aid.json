@@ -1,0 +1,33 @@
+{
+    "common_data": {
+        "sender": "Wei Lee",
+        "team": "PyCon Taiwan 2019 Program Team"
+    },
+    "unique_data": [
+        {
+            "receiver_email": "somerec@somedomain",
+             "receiver_name": "somebody",
+            "travel_fee": 1000,
+            "acc_days": 4,
+            "acc_dates": "Sep 20 ~ Sep 23",
+            "has_ticket": true,
+            "ticket_price": 1500,
+            "acc_form_link": "http://this.is.a.link"
+        },
+        {
+            "receiver_email": "somerec1@somedomain",
+            "receiver_name": "somebody with no ticket",
+            "travel_fee": 1000,
+            "acc_days": 4,
+            "acc_dates": "Sep 20 ~ Sep 23",
+            "has_ticket": false,
+            "acc_form_link": "http://this.is.a.link"
+        },
+        {
+            "receiver_email": "somerec2@somedomain",
+            "receiver_name": "somebody with no accommodation",
+            "travel_fee": 1000,
+            "has_ticket": false
+        }
+    ]
+}
