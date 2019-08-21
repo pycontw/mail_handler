@@ -1,0 +1,5 @@
+{
+    "Subject": "test",
+    "From": "some email",
+    "CC": "some email, another email"
+}
