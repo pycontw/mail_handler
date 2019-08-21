@@ -8,17 +8,17 @@ def init(cmd):
 
 @task
 def pylint(cmd):
-    cmd.run('pipenv run pylint mail_renderer.py', pty=True)
+    cmd.run('pipenv run pylint mail_renderer.py mail_sender.py', pty=True)
 
 
 @task
 def flake8(cmd):
-    cmd.run('pipenv run flake8 mail_renderer.py', pty=True)
+    cmd.run('pipenv run flake8', pty=True)
 
 
 @task
 def mypy(cmd):
-    cmd.run('pipenv run mypy mail_renderer.py', pty=True)
+    cmd.run('pipenv run mypy mail_renderer.py mail_sender.py', pty=True)
 
 
 @task
