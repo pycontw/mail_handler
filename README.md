@@ -30,7 +30,7 @@ Options:
 {
     "common_data": {},
     "unique_data": [
-        "receiver_email": "somerec@somedomain"
+        {"receiver_email": "somerec@somedomain"}
     ]
 }
 ```
@@ -51,7 +51,7 @@ Options:
 ```json
 {
     "Subject": "some subject",
-    "From": "somebody@somedomain"
+    "From": "somebody@somedomain",
     "CC": "somebody1@somedomain, somebody2@somedomain"
 }
 ```
