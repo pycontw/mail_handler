@@ -59,6 +59,24 @@ Options:
 
 * `--mails_path PATH`: The path of the mails to sent.
 
+By issuing the `send_mail.py` command,
+you will be prompted to input the corresponding password of your smtp server.
+
+```shell script
+You are about to send the mails under "mails_to_sent". Do you want to continue? [y/N]: y
+Please enter your mail account: <sender email address in mail config>
+Please enter you mail password:
+INFO:root:Email sent to <receiver address in RECEIVER_DATA>!
+```
+
+Currently we only support the smtp server of `gmail`,
+so you may want to use the one-time app password for security concern.
+To use gmail one-time app password, please go to
+`Manage your Goolge Account > Security > Signning to Google > App passwords` and then
+`Select app > Other`
+to generate your one-time app password. The generated password could be removed anytime
+if you are sure that you won't use it anymore.
+
 ## Contributing
 See [Contributing](contributing.md)
 
