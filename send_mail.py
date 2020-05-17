@@ -31,10 +31,14 @@ def build_mail(
     mail_content: str,
     config: Dict[str, str],
     attachment_file: str = None,
+    suffix: str = None,
 ) -> MIMEMultipart:
     mail = MIMEMultipart()
     mail.attach(MIMEText(mail_content))
-    mail["Subject"] = config.get("Subject", "")
+    if suffix:
+        mail['Subject'] = ''.join([config.get('Subject', ''), ' - ', suffix])
+    else:
+        mail['Subject'] = config.get('Subject', '')
     mail["From"] = config.get("From", "")
     mail["To"] = receiver_addr
     mail["CC"] = config.get("CC", "")
@@ -85,9 +89,17 @@ def main(mails_path, config_path, attachment_file=None):
         with open(config_path, "r") as config_file:
             config = json.load(config_file)
 
-        addr_to_content = load_mails(mails_path)
-        for mail_addr, mail_content in addr_to_content.items():
-            mail = build_mail(mail_addr, mail_content, config, attachment_file)
+        address_suffix_to_content = load_mails(mails_path)
+        for mail_addr_suffix, mail_content in address_suffix_to_content.items():
+            try:
+                seperator = ' - '
+                mail_addr_suffix_list = mail_addr_suffix.split(seperator)
+                mail_addr = mail_addr_suffix_list[0]
+                mail_suffix = mail_addr_suffix_list[1]
+            except IndexError:
+                mail_suffix = ''
+
+            mail = build_mail(mail_addr, mail_content, config, attachment_file, suffix=mail_suffix)
             send_mail(mail, user, password)
 
 
