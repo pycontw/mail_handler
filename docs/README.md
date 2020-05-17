@@ -35,6 +35,40 @@ Options:
 }
 ```
 
+Please note the comma is able to be used as a receiver separator to send multiple people. For example, the following 3
+formats are all working:
+
+A space following a comma
+```json
+{
+    "common_data": {},
+    "unique_data": [
+        {"receiver_email": "somerec01@somedomain, somerec02@somedomain"}
+    ]
+}
+```
+
+No space following a comma
+```json
+{
+    "common_data": {},
+    "unique_data": [
+        {"receiver_email": "somerec01@somedomain,somerec02@somedomain"}
+    ]
+}
+```
+
+Or mix both of the above two types
+```json
+{
+    "common_data": {},
+    "unique_data": [
+        {"receiver_email": "somerec01@somedomain, somerec02@somedomain,somerec03@somedomain"}
+    ]
+}
+```
+
+
 * `--mails_path PATH`: The output path of the mails. The mail will be named as the receivers email address.
 
 ### Step 2: Send the generated mails
@@ -56,6 +90,8 @@ Options:
     "CC": "somebody1@somedomain, somebody2@somedomain"
 }
 ```
+
+Please note the comma is used as a receiver separator to send multiple people.
 
 * `--mails_path PATH`: The path of the mails to sent.
 
