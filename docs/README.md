@@ -44,6 +44,7 @@ python send_mail.py [OPTIONS] CONFIG_PATH
 
 Options:
   --output_path PATH  [default: mails_to_sent]
+  --attachment_file PATH
 ```
 
 * `CONFIG_PATH`: The path to mail config.
