@@ -38,7 +38,7 @@ def build_mail(receiver_addr: str, mail_content: str, config: Dict[str, str], at
     if attachment_file is not None:
         with open(attachment_file, 'rb') as f:
             attach = MIMEApplication(f.read())
-        attach.add_header('Content-Disposition', 'attachment', filename=str(attachment_file))
+        attach.add_header('Content-Disposition', 'attachment', filename=str(os.path.basename(attachment_file)))
         mail.attach(attach)
 
     return mail
