@@ -58,24 +58,8 @@ Options:
 
 * `--mails_path PATH`: The path of the mails to sent.
 
-## Development
-
-### Additional Prerequiste
-
-* [invoke](http://www.pyinvoke.org)
-* [pipenv](https://pipenv.readthedocs.io)
-
-### Environment Setup
-
-```sh
-inv init
-```
-
-### Check Style
-
-```sh
-inv lint
-```
+## Contributing
+See [Contributing](contributing.md)
 
 ## Authors
 
