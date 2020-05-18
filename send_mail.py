@@ -40,8 +40,8 @@ def build_mail(
     mail['To'] = receiver_addr
     mail['CC'] = config.get('CC', '')
 
-    if attachment_file is not None:
-        with open(attachment_file, 'rb') as f:
+    if attachment_file:
+        with open(attachment_file, "rb") as f:
             attach = MIMEApplication(f.read())
         attach.add_header('Content-Disposition', 'attachment', filename=str(os.path.basename(attachment_file)))
         mail.attach(attach)
