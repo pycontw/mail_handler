@@ -27,7 +27,12 @@ def load_mails(input_dir) -> Dict[str, str]:
     return addr_to_content
 
 
-def build_mail(receiver_addr: str, mail_content: str, config: Dict[str, str], attachment_file=None) -> MIMEText:
+def build_mail(
+    receiver_addr: str,
+    mail_content: str,
+    config: Dict[str, str],
+    attachment_file: str = None,
+) -> MIMEMultipart:
     mail = MIMEMultipart()
     mail.attach(MIMEText(mail_content))
     mail['Subject'] = config.get('Subject', '')
