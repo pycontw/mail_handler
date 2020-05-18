@@ -1,0 +1,12 @@
+{
+    "common_data": {
+        "sender_name": "Taihsiang Ho",
+        "sender_team": "2020 台灣 Python 年會籌備團隊 贊助組"
+    },
+    "unique_data": [
+        {
+            "receiver_email": "sponsorship@pycon.tw",
+            "receiver_name": "贊助組測試有限公司"
+        }
+    ]
+}
