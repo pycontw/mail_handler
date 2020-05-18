@@ -15,4 +15,9 @@ def bump(ctx, with_changelog=False):
     argument = ""
     if with_changelog:
         argument += " --changelog"
-    ctx.run(f"{VENV_PREFIX} cz bump --yes{argument}", warn=True)
+
+    result = ctx.run(f"{VENV_PREFIX} cz bump --yes{argument}", warn=True)
+    if result.exited == 3:  # NO_COMMIT_FOUND
+        exit(0)
+    else:
+        exit(result.exited)
