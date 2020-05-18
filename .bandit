@@ -1,0 +1,3 @@
+[bandit]
+targets: send_mail.py,render_mail.py
+exclude: tests
