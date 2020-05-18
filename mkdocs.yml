@@ -1,0 +1,8 @@
+site_name: mail_handler
+nav:
+  - Home: README.md
+theme:
+  name: 'material'
+repo_url: https://github.com/pycontw/mail_handler
+remote_branch: gh-pages
+remote_name: origin
