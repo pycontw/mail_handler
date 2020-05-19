@@ -3,7 +3,6 @@ import json
 import logging
 import os
 import smtplib
-import json
 from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -35,15 +34,19 @@ def build_mail(
 ) -> MIMEMultipart:
     mail = MIMEMultipart()
     mail.attach(MIMEText(mail_content))
-    mail['Subject'] = config.get('Subject', '')
-    mail['From'] = config.get('From', '')
-    mail['To'] = receiver_addr
-    mail['CC'] = config.get('CC', '')
+    mail["Subject"] = config.get("Subject", "")
+    mail["From"] = config.get("From", "")
+    mail["To"] = receiver_addr
+    mail["CC"] = config.get("CC", "")
 
     if attachment_file:
         with open(attachment_file, "rb") as f:
             attach = MIMEApplication(f.read())
-        attach.add_header('Content-Disposition', 'attachment', filename=str(os.path.basename(attachment_file)))
+        attach.add_header(
+            "Content-Disposition",
+            "attachment",
+            filename=str(os.path.basename(attachment_file)),
+        )
         mail.attach(attach)
 
     return mail
@@ -62,14 +65,24 @@ def send_mail(mail, user, password, server_config=None):
 
 
 @click.command()
-@click.argument('config_path', type=click.Path(exists=True))
-@click.option('--mails_path', type=click.Path(exists=False), default='mails_to_sent', show_default=True)
-@click.option('--attachment_file', type=click.Path(exists=False))
+@click.argument("config_path", type=click.Path(exists=True))
+@click.option(
+    "--mails_path",
+    type=click.Path(exists=False),
+    default="mails_to_sent",
+    show_default=True,
+)
+@click.option("--attachment_file", type=click.Path(exists=False))
 def main(mails_path, config_path, attachment_file=None):
-    if click.confirm(f'You are about to send the mails under "{mails_path}". Do you want to continue?', abort=True):
-        user = click.prompt('Please enter your mail account', type=str)
-        password = click.prompt('Please enter you mail password', type=str, hide_input=True)
-        with open(config_path, 'r') as config_file:
+    if click.confirm(
+        f'You are about to send the mails under "{mails_path}". Do you want to continue?',
+        abort=True,
+    ):
+        user = click.prompt("Please enter your mail account", type=str)
+        password = click.prompt(
+            "Please enter you mail password", type=str, hide_input=True
+        )
+        with open(config_path, "r") as config_file:
             config = json.load(config_file)
 
         addr_to_content = load_mails(mails_path)
