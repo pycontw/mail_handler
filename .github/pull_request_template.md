@@ -1,10 +1,4 @@
----
-name: Pull request
-about: Propose a pull request
-title: "[Type of change] issue XXX, what this pull request has done."
-labels: ""
-assignees: ""
----
+(Thanks for sending a pull request :slightly_smiling_face: Please fill in the following content to let us know better about this change.)
 
 ## Types of changes
 Please put an `x` in the box that applies
