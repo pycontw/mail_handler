@@ -15,15 +15,18 @@ def load_template(tmpl_path: Path) -> Template:
 
 
 def render_all_content(
-    template: Template, common_data: Dict[str, str], unique_data: List[Dict[str, str]], separator: str
+    template: Template,
+    common_data: Dict[str, str],
+    unique_data: List[Dict[str, str]],
+    separator: str,
 ) -> Dict[str, str]:
     recv_to_mail = dict()
     for data in unique_data:
         data.update(common_data)
         if separator:
-            subject = separator.join([data['receiver_email'], data['receiver_name']])
+            subject = separator.join([data["receiver_email"], data["receiver_name"]])
         else:
-            subject = data['receiver_email']
+            subject = data["receiver_email"]
         recv_to_mail[subject] = template.render(**data)
     return recv_to_mail
 
@@ -37,7 +40,12 @@ def export_mails(recv_to_mail, output_path):
 @click.command()
 @click.argument("template_path", type=click.Path(exists=True))
 @click.argument("receiver_data", type=click.Path(exists=True))
-@click.option('--separator', default="", show_default=True, help="Separator used for subject suffix")
+@click.option(
+    "--separator",
+    default="",
+    show_default=True,
+    help="Separator used for subject suffix",
+)
 @click.option(
     "--output_path",
     type=click.Path(exists=False),
