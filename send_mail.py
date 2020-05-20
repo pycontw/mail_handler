@@ -37,9 +37,9 @@ def build_mail(
     mail = MIMEMultipart()
     mail.attach(MIMEText(mail_content))
     if suffix:
-        mail['Subject'] = ''.join([config.get('Subject', ''), separator, suffix])
+        mail["Subject"] = "".join([config.get("Subject", ""), separator, suffix])
     else:
-        mail['Subject'] = config.get('Subject', '')
+        mail["Subject"] = config.get("Subject", "")
     mail["From"] = config.get("From", "")
     mail["To"] = receiver_addr
     mail["CC"] = config.get("CC", "")
@@ -77,7 +77,12 @@ def send_mail(mail, user, password, server_config=None):
     default="mails_to_sent",
     show_default=True,
 )
-@click.option('--separator', default="", show_default=True, help="Separator used for subject suffix")
+@click.option(
+    "--separator",
+    default="",
+    show_default=True,
+    help="Separator used for subject suffix",
+)
 @click.option("--attachment_file", type=click.Path(exists=False))
 def main(mails_path, config_path, separator, attachment_file=None):
     if click.confirm(
@@ -93,9 +98,18 @@ def main(mails_path, config_path, separator, attachment_file=None):
 
         address_suffix_to_content = load_mails(mails_path)
         for mail_addr_suffix, mail_content in address_suffix_to_content.items():
-            mail_addr, *mail_suffix_and_more = mail_addr_suffix.split(separator, maxsplit=1)
+            mail_addr, *mail_suffix_and_more = mail_addr_suffix.split(
+                separator, maxsplit=1
+            )
             mail_suffix = mail_suffix_and_more[0] if mail_suffix_and_more else None
-            mail = build_mail(mail_addr, mail_content, config, separator, attachment_file=attachment_file, suffix=mail_suffix)
+            mail = build_mail(
+                mail_addr,
+                mail_content,
+                config,
+                separator,
+                attachment_file=attachment_file,
+                suffix=mail_suffix,
+            )
             send_mail(mail, user, password)
 
 
