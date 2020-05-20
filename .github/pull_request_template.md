@@ -29,5 +29,8 @@ Steps to reproduce the behavior:
 ## Expected behavior
 A clear and concise description of what you expected to happen
 
+## Related Issue
+If applicable, refernce to the issue related to this pull request.
+
 ## Additional context
 Add any other context or screenshots about the pull request here.
