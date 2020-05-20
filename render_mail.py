@@ -15,14 +15,13 @@ def load_template(tmpl_path: Path) -> Template:
 
 
 def render_all_content(
-    template: Template, common_data: Dict[str, str], unique_data: List[Dict[str, str]], subject_suffix: bool
+    template: Template, common_data: Dict[str, str], unique_data: List[Dict[str, str]], separator: str
 ) -> Dict[str, str]:
     recv_to_mail = dict()
     for data in unique_data:
         data.update(common_data)
-        if subject_suffix:
-            seperator = ' - '
-            subject = seperator.join([data['receiver_email'], data['receiver_name']])
+        if separator:
+            subject = separator.join([data['receiver_email'], data['receiver_name']])
         else:
             subject = data['receiver_email']
         recv_to_mail[subject] = template.render(**data)
@@ -38,14 +37,14 @@ def export_mails(recv_to_mail, output_path):
 @click.command()
 @click.argument("template_path", type=click.Path(exists=True))
 @click.argument("receiver_data", type=click.Path(exists=True))
-@click.option('--subject-suffix/--no-subject-suffix', default=True, show_default=True)
+@click.option('--separator', default="", show_default=True, help="Separator used for subject suffix")
 @click.option(
     "--output_path",
     type=click.Path(exists=False),
     default="mails_to_sent",
     show_default=True,
 )
-def main(template_path, receiver_data, subject_suffix, output_path):
+def main(template_path, receiver_data, separator, output_path):
     if not os.path.isdir(output_path):
         logging.info('Create directory "%s"', output_path)
         os.mkdir(output_path)
@@ -56,7 +55,7 @@ def main(template_path, receiver_data, subject_suffix, output_path):
         unique_data = data["unique_data"]
 
     template = load_template(template_path)
-    recv_to_mail = render_all_content(template, common_data, unique_data, subject_suffix=subject_suffix)
+    recv_to_mail = render_all_content(template, common_data, unique_data, separator)
     export_mails(recv_to_mail, output_path)
 
 

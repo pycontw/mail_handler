@@ -30,13 +30,14 @@ def build_mail(
     receiver_addr: str,
     mail_content: str,
     config: Dict[str, str],
+    separator,
     attachment_file: str = None,
     suffix: str = None,
 ) -> MIMEMultipart:
     mail = MIMEMultipart()
     mail.attach(MIMEText(mail_content))
     if suffix:
-        mail['Subject'] = ''.join([config.get('Subject', ''), ' - ', suffix])
+        mail['Subject'] = ''.join([config.get('Subject', ''), separator, suffix])
     else:
         mail['Subject'] = config.get('Subject', '')
     mail["From"] = config.get("From", "")
@@ -76,8 +77,9 @@ def send_mail(mail, user, password, server_config=None):
     default="mails_to_sent",
     show_default=True,
 )
+@click.option('--separator', default="", show_default=True, help="Separator used for subject suffix")
 @click.option("--attachment_file", type=click.Path(exists=False))
-def main(mails_path, config_path, attachment_file=None):
+def main(mails_path, config_path, separator, attachment_file=None):
     if click.confirm(
         f'You are about to send the mails under "{mails_path}". Do you want to continue?',
         abort=True,
@@ -91,15 +93,9 @@ def main(mails_path, config_path, attachment_file=None):
 
         address_suffix_to_content = load_mails(mails_path)
         for mail_addr_suffix, mail_content in address_suffix_to_content.items():
-            try:
-                seperator = ' - '
-                mail_addr_suffix_list = mail_addr_suffix.split(seperator)
-                mail_addr = mail_addr_suffix_list[0]
-                mail_suffix = mail_addr_suffix_list[1]
-            except IndexError:
-                mail_suffix = ''
-
-            mail = build_mail(mail_addr, mail_content, config, attachment_file, suffix=mail_suffix)
+            mail_addr, *mail_suffix_and_more = mail_addr_suffix.split(separator, maxsplit=1)
+            mail_suffix = mail_suffix_and_more[0] if mail_suffix_and_more else None
+            mail = build_mail(mail_addr, mail_content, config, separator, attachment_file=attachment_file, suffix=mail_suffix)
             send_mail(mail, user, password)
 
 
