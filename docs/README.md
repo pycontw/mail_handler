@@ -77,7 +77,7 @@ Or mix both of the above two types
 python send_mail.py [OPTIONS] CONFIG_PATH
 
 Options:
-  --output_path PATH  [default: mails_to_sent]
+  --mails_path PATH  [default: mails_to_sent]
   --attachment_file PATH
 ```
 
