@@ -1,6 +1,5 @@
 import glob
 
-import pytest
 from click.testing import CliRunner
 
 from render_mail import main
