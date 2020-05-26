@@ -1,11 +1,10 @@
-import filecmp
 import glob
-import os
 
 import pytest
 from click.testing import CliRunner
 
 from render_mail import main
+from tests.utils import get_all_mail_names_from_path, compare_rendered_mail_all
 
 path_j2 = "./templates/sponsorship/spam_sponsors_2020.j2"
 path_receivers_json = "./examples/sponsorship/spam_sponsors_2020.json"
@@ -27,30 +26,6 @@ def all_mails_base_with_separator():
     return get_all_mail_names_from_path(
         glob.glob("/".join((path_pre_rendered_mails_with_separator, "*@*")))
     )
-
-
-def get_all_mail_names_from_path(mails):
-    all_mail_names = []
-    for mail in mails:
-        all_mail_names.append(os.path.basename(mail))
-
-    return all_mail_names
-
-
-def compare_rendered_mail_all(
-    targets, base_prefix="./data", target_prefix="../examples"
-):
-    for mail_name in targets:
-        if not compare_rendered_mail(
-            "/".join((base_prefix, mail_name)), "/".join((target_prefix, mail_name))
-        ):
-            return False
-
-    return True
-
-
-def compare_rendered_mail(base, target):
-    return filecmp.cmp(base, target, shallow=False)
 
 
 def test_rendered_mail_no_separator(all_mails_base_no_separator):
