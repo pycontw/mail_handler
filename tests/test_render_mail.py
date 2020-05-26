@@ -14,20 +14,6 @@ path_pre_rendered_mails_no_separator = "./tests/data/no-separator"
 path_pre_rendered_mails_with_separator = "./tests/data/with-separator"
 
 
-@pytest.fixture
-def all_mails_base_no_separator():
-    return get_all_mail_names_from_path(
-        glob.glob("/".join((path_pre_rendered_mails_no_separator, "*@*")))
-    )
-
-
-@pytest.fixture
-def all_mails_base_with_separator():
-    return get_all_mail_names_from_path(
-        glob.glob("/".join((path_pre_rendered_mails_with_separator, "*@*")))
-    )
-
-
 def test_rendered_mail_no_separator(all_mails_base_no_separator):
     runner = CliRunner()
     result = runner.invoke(
