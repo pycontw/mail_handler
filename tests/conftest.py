@@ -5,11 +5,11 @@ import shutil
 import pytest
 
 from tests.utils import (
-    path_pre_rendered_mails_no_separator,
-    path_pre_rendered_mails_with_separator,
     get_all_mail_names_from_path,
     path_mails_to_send_no_separator,
     path_mails_to_send_with_separator,
+    path_pre_rendered_mails_no_separator,
+    path_pre_rendered_mails_with_separator,
     send_mail_debug_dump_path,
 )
 

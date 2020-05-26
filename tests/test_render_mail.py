@@ -4,8 +4,8 @@ from click.testing import CliRunner
 
 from render_mail import main
 from tests.utils import (
-    get_all_mail_names_from_path,
     compare_rendered_mail_all,
+    get_all_mail_names_from_path,
     path_mails_to_send_no_separator,
     path_mails_to_send_with_separator,
 )
