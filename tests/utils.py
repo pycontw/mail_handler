@@ -6,6 +6,8 @@ import pickle
 path_mail_config = "./examples/sponsorship/spam_sponsors_2020_mail_config.json"
 path_receivers = "./examples/sponsorship/spam_sponsors_2020.json"
 path_attachment = "./tests/data/attachment-file/attachment01.txt"
+path_pre_rendered_mails_no_separator = "./tests/data/no-separator"
+path_pre_rendered_mails_with_separator = "./tests/data/with-separator"
 
 
 def get_all_mail_names_from_path(mails):

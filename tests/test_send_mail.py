@@ -1,27 +1,8 @@
-import glob
-
-import pytest
 from click.testing import CliRunner
 
 from send_mail import main
-from tests.utils import get_all_mail_names_from_path, compare_on_sending_mail_all, path_attachment, path_mail_config
-
-path_pre_rendered_mails_no_separator = "./tests/data/no-separator"
-path_pre_rendered_mails_with_separator = "./tests/data/with-separator"
-
-
-@pytest.fixture
-def all_mails_base_no_separator():
-    return get_all_mail_names_from_path(
-        glob.glob("/".join((path_pre_rendered_mails_no_separator, "*@*")))
-    )
-
-
-@pytest.fixture
-def all_mails_base_with_separator():
-    return get_all_mail_names_from_path(
-        glob.glob("/".join((path_pre_rendered_mails_with_separator, "*@*")))
-    )
+from tests.utils import get_all_mail_names_from_path, compare_on_sending_mail_all, path_attachment, \
+    path_mail_config, path_pre_rendered_mails_no_separator, path_pre_rendered_mails_with_separator
 
 
 def test_send_mail_no_separator_no_attachment(all_mails_base_no_separator):
