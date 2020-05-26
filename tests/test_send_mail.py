@@ -1,8 +1,14 @@
 from click.testing import CliRunner
 
 from send_mail import main
-from tests.utils import get_all_mail_names_from_path, compare_on_sending_mail_all, path_attachment, \
-    path_mail_config, path_pre_rendered_mails_no_separator, path_pre_rendered_mails_with_separator
+from tests.utils import (
+    get_all_mail_names_from_path,
+    compare_on_sending_mail_all,
+    path_attachment,
+    path_mail_config,
+    path_pre_rendered_mails_no_separator,
+    path_pre_rendered_mails_with_separator,
+)
 
 
 def test_send_mail_no_separator_no_attachment(all_mails_base_no_separator):
