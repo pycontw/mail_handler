@@ -3,6 +3,8 @@ import json
 import logging
 import os
 import smtplib
+import pickle
+from pathlib import Path
 from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -69,6 +71,19 @@ def send_mail(mail, user, password, server_config=None):
     server.quit()
 
 
+def dump_mail(mail, suffix):
+    if suffix:
+        dump_path = "/tmp/mail_handler/with-separator"
+        Path(dump_path).mkdir(parents=True, exist_ok=True)
+        with open(f"{dump_path}/{mail['To']}", "wb") as dumpf:
+            pickle.dump(mail, dumpf)
+    else:
+        dump_path = "/tmp/mail_handler/no-separator"
+        Path(dump_path).mkdir(parents=True, exist_ok=True)
+        with open(f"{dump_path}/{mail['To']}", "wb") as dumpf:
+            pickle.dump(mail, dumpf)
+
+
 @click.command()
 @click.argument("config_path", type=click.Path(exists=True))
 @click.option(
@@ -77,14 +92,15 @@ def send_mail(mail, user, password, server_config=None):
     default="mails_to_sent",
     show_default=True,
 )
+@click.option("--debug", is_flag=True)
 @click.option(
     "--separator",
-    default="",
+    default=" - ",
     show_default=True,
     help="Separator used for subject suffix",
 )
 @click.option("--attachment_file", type=click.Path(exists=False))
-def main(mails_path, config_path, separator, attachment_file=None):
+def main(mails_path, config_path, debug, separator, attachment_file=None):
     if click.confirm(
         f'You are about to send the mails under "{mails_path}". Do you want to continue?',
         abort=True,
@@ -110,7 +126,12 @@ def main(mails_path, config_path, separator, attachment_file=None):
                 attachment_file=attachment_file,
                 suffix=mail_suffix,
             )
-            send_mail(mail, user, password)
+
+            if debug:
+                print("Debug mode is on. Dump mails instead of sending them.")
+                dump_mail(mail, mail_suffix)
+            else:
+                send_mail(mail, user, password)
 
 
 # pylint: disable=no-value-for-parameter
