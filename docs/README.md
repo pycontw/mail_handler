@@ -98,7 +98,7 @@ Please note the comma is used as a receiver separator to send multiple people.
 By issuing the `send_mail.py` command,
 you will be prompted to input the corresponding password of your smtp server.
 
-```shell script
+```plaintext
 You are about to send the mails under "mails_to_sent". Do you want to continue? [y/N]: y
 Please enter your mail account: <sender email address in mail config>
 Please enter you mail password:
