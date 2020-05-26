@@ -2,12 +2,12 @@
 import json
 import logging
 import os
-import smtplib
 import pickle
-from pathlib import Path
+import smtplib
 from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from pathlib import Path
 from typing import Dict
 
 import click
