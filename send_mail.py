@@ -32,7 +32,7 @@ def build_mail(
     receiver_addr: str,
     mail_content: str,
     config: Dict[str, str],
-    separator,
+    separator: str,
     attachment_file: str = None,
     suffix: str = None,
 ) -> MIMEMultipart:
@@ -82,6 +82,7 @@ def dump_mail(mail, suffix):
         Path(dump_path).mkdir(parents=True, exist_ok=True)
         with open(f"{dump_path}/{mail['To']}", "wb") as dumpf:
             pickle.dump(mail, dumpf)
+    print(f"Debug mode is on. Dump mails to {dump_path} instead of sending them.")
 
 
 @click.command()
@@ -128,7 +129,6 @@ def main(mails_path, config_path, debug, separator, attachment_file=None):
             )
 
             if debug:
-                print("Debug mode is on. Dump mails instead of sending them.")
                 dump_mail(mail, mail_suffix)
             else:
                 send_mail(mail, user, password)
