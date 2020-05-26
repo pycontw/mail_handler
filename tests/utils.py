@@ -47,14 +47,6 @@ def get_receivers():
         return json.load(f)
 
 
-def get_all_mail_names_from_path(mails):
-    all_mail_names = []
-    for mail in mails:
-        all_mail_names.append(os.path.basename(mail))
-
-    return all_mail_names
-
-
 def compare_on_sending_mail_all(
     targets, target_prefix="../examples", separator=" - ",
 ):
