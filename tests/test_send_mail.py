@@ -116,16 +116,12 @@ def is_attachment_expected(target_content):
         content_disposition = part.get("Content-Disposition", None)
         if content_disposition:
             dispositions = content_disposition.strip().split(";")
-            if bool(content_disposition and dispositions[0].lower() == "attachment"):
+            if dispositions[0].lower() == "attachment":
                 target_data = part.get_payload(decode=True)
                 with open(path_attachment, "rb") as fattachment:
                     base_data = fattachment.readlines()
                     data_str_target = target_data.decode("utf-8")
-                    base_data_tmp = []
-
-                    for line in base_data:
-                        base_data_tmp.append(line.decode("utf-8"))
-                    data_str_base = "".join(base_data_tmp)
+                    data_str_base = "".join([line.decode("utf-8") for line in base_data])
 
                     if data_str_base != data_str_target:
                         return False
