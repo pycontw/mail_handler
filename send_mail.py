@@ -74,14 +74,11 @@ def send_mail(mail, user, password, server_config=None):
 def dump_mail(mail, suffix):
     if suffix:
         dump_path = "/tmp/mail_handler/with-separator"
-        Path(dump_path).mkdir(parents=True, exist_ok=True)
-        with open(f"{dump_path}/{mail['To']}", "wb") as dumpf:
-            pickle.dump(mail, dumpf)
     else:
         dump_path = "/tmp/mail_handler/no-separator"
-        Path(dump_path).mkdir(parents=True, exist_ok=True)
-        with open(f"{dump_path}/{mail['To']}", "wb") as dumpf:
-            pickle.dump(mail, dumpf)
+    Path(dump_path).mkdir(parents=True, exist_ok=True)
+    with open(f"{dump_path}/{mail['To']}", "wb") as dumpf:
+        pickle.dump(mail, dumpf)
     print(f"Debug mode is on. Dump mails to {dump_path} instead of sending them.")
 
 
