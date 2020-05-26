@@ -8,6 +8,9 @@ path_receivers = "./examples/sponsorship/spam_sponsors_2020.json"
 path_attachment = "./tests/data/attachment-file/attachment01.txt"
 path_pre_rendered_mails_no_separator = "./tests/data/no-separator"
 path_pre_rendered_mails_with_separator = "./tests/data/with-separator"
+path_mails_to_send_no_separator = "/tmp/mails_to_send/no-separator"
+path_mails_to_send_with_separator = "/tmp/mails_to_send/with-separator"
+send_mail_debug_dump_path = "/tmp/mail_handler/"
 
 
 def get_all_mail_names_from_path(mails):

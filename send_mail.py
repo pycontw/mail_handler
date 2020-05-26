@@ -12,6 +12,8 @@ from typing import Dict
 
 import click
 
+from tests.utils import send_mail_debug_dump_path
+
 MAIL_SERVER_CONFIG = {"gmail": {"host": "smtp.gmail.com", "port": 465}}
 
 
@@ -73,9 +75,9 @@ def send_mail(mail, user, password, server_config=None):
 
 def dump_mail(mail, suffix):
     if suffix:
-        dump_path = "/tmp/mail_handler/with-separator"
+        dump_path = "/".join((send_mail_debug_dump_path, "with-separator"))
     else:
-        dump_path = "/tmp/mail_handler/no-separator"
+        dump_path = "/".join((send_mail_debug_dump_path, "no-separator"))
     Path(dump_path).mkdir(parents=True, exist_ok=True)
     with open(f"{dump_path}/{mail['To']}", "wb") as dumpf:
         pickle.dump(mail, dumpf)
