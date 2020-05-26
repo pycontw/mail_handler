@@ -129,7 +129,9 @@ def is_attachment_expected(target_content):
                 with open(path_attachment, "rb") as fattachment:
                     base_data = fattachment.readlines()
                     data_str_target = target_data.decode("utf-8")
-                    data_str_base = "".join([line.decode("utf-8") for line in base_data])
+                    data_str_base = "".join(
+                        [line.decode("utf-8") for line in base_data]
+                    )
 
                     if data_str_base != data_str_target:
                         return False

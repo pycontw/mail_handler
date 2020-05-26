@@ -4,8 +4,12 @@ import pytest
 from click.testing import CliRunner
 
 from render_mail import main
-from tests.utils import get_all_mail_names_from_path, compare_rendered_mail_all, path_mails_to_send_no_separator, \
-    path_mails_to_send_with_separator
+from tests.utils import (
+    get_all_mail_names_from_path,
+    compare_rendered_mail_all,
+    path_mails_to_send_no_separator,
+    path_mails_to_send_with_separator,
+)
 
 path_j2 = "./templates/sponsorship/spam_sponsors_2020.j2"
 path_receivers_json = "./examples/sponsorship/spam_sponsors_2020.json"
