@@ -1,12 +1,12 @@
-import pickle
 import glob
 import json
 import os
+import pickle
+
 import pytest
-
 from click.testing import CliRunner
-from send_mail import main
 
+from send_mail import main
 
 path_mail_config = "./examples/sponsorship/spam_sponsors_2020_mail_config.json"
 path_receivers = "./examples/sponsorship/spam_sponsors_2020.json"

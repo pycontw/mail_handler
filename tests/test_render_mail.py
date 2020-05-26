@@ -1,11 +1,11 @@
 import filecmp
 import glob
 import os
+
 import pytest
-
 from click.testing import CliRunner
-from render_mail import main
 
+from render_mail import main
 
 path_j2 = "./templates/sponsorship/spam_sponsors_2020.j2"
 path_receivers_json = "./examples/sponsorship/spam_sponsors_2020.json"
