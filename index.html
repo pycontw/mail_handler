@@ -11,7 +11,7 @@
       
       
       <link rel="shortcut icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.1.7">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.2.2">
     
     
       
@@ -19,7 +19,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.4c7052ca.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.a2408e81.min.css">
       
       
     
@@ -403,6 +403,35 @@ Options:
 }
 </code></pre>
 
+<p>Please note the comma is able to be used as a receiver separator to send multiple people. For example, the following 3
+formats are all working:</p>
+<p>A space following a comma</p>
+<pre><code class="json">{
+    &quot;common_data&quot;: {},
+    &quot;unique_data&quot;: [
+        {&quot;receiver_email&quot;: &quot;somerec01@somedomain, somerec02@somedomain&quot;}
+    ]
+}
+</code></pre>
+
+<p>No space following a comma</p>
+<pre><code class="json">{
+    &quot;common_data&quot;: {},
+    &quot;unique_data&quot;: [
+        {&quot;receiver_email&quot;: &quot;somerec01@somedomain,somerec02@somedomain&quot;}
+    ]
+}
+</code></pre>
+
+<p>Or mix both of the above two types</p>
+<pre><code class="json">{
+    &quot;common_data&quot;: {},
+    &quot;unique_data&quot;: [
+        {&quot;receiver_email&quot;: &quot;somerec01@somedomain, somerec02@somedomain,somerec03@somedomain&quot;}
+    ]
+}
+</code></pre>
+
 <ul>
 <li><code>--mails_path PATH</code>: The output path of the mails. The mail will be named as the receivers email address.</li>
 </ul>
@@ -410,7 +439,7 @@ Options:
 <pre><code class="sh">python send_mail.py [OPTIONS] CONFIG_PATH
 
 Options:
-  --output_path PATH  [default: mails_to_sent]
+  --mails_path PATH  [default: mails_to_sent]
   --attachment_file PATH
 </code></pre>
 
@@ -424,9 +453,25 @@ Options:
 }
 </code></pre>
 
+<p>Please note the comma is used as a receiver separator to send multiple people.</p>
 <ul>
 <li><code>--mails_path PATH</code>: The path of the mails to sent.</li>
 </ul>
+<p>By issuing the <code>send_mail.py</code> command,
+you will be prompted to input the corresponding password of your smtp server.</p>
+<pre><code class="plaintext">You are about to send the mails under &quot;mails_to_sent&quot;. Do you want to continue? [y/N]: y
+Please enter your mail account: &lt;sender email address in mail config&gt;
+Please enter you mail password:
+INFO:root:Email sent to &lt;receiver address in RECEIVER_DATA&gt;!
+</code></pre>
+
+<p>Currently we only support the smtp server of <code>gmail</code>,
+so you may want to use the one-time app password for security concern.
+To use gmail one-time app password, please go to
+<code>Manage your Goolge Account &gt; Security &gt; Signning to Google &gt; App passwords</code> and then
+<code>Select app &gt; Other</code>
+to generate your one-time app password. The generated password could be removed anytime
+if you are sure that you won't use it anymore.</p>
 <h2 id="contributing">Contributing</h2>
 <p>See <a href="contributing/">Contributing</a></p>
 <h2 id="authors">Authors</h2>
@@ -483,7 +528,7 @@ Options:
       
     </div>
     
-      <script src="assets/javascripts/vendor.22b62ea4.min.js"></script>
+      <script src="assets/javascripts/vendor.d710d30a.min.js"></script>
       <script src="assets/javascripts/bundle.5f27aba8.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
       
       <script>
@@ -491,7 +536,7 @@ Options:
           base: ".",
           features: [],
           search: Object.assign({
-            worker: "assets/javascripts/worker/search.f6ebf1dc.min.js"
+            worker: "assets/javascripts/worker/search.27c6a5e6.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>
