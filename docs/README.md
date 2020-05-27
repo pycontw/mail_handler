@@ -35,6 +35,40 @@ Options:
 }
 ```
 
+Please note the comma is able to be used as a receiver separator to send multiple people. For example, the following 3
+formats are all working:
+
+A space following a comma
+```json
+{
+    "common_data": {},
+    "unique_data": [
+        {"receiver_email": "somerec01@somedomain, somerec02@somedomain"}
+    ]
+}
+```
+
+No space following a comma
+```json
+{
+    "common_data": {},
+    "unique_data": [
+        {"receiver_email": "somerec01@somedomain,somerec02@somedomain"}
+    ]
+}
+```
+
+Or mix both of the above two types
+```json
+{
+    "common_data": {},
+    "unique_data": [
+        {"receiver_email": "somerec01@somedomain, somerec02@somedomain,somerec03@somedomain"}
+    ]
+}
+```
+
+
 * `--mails_path PATH`: The output path of the mails. The mail will be named as the receivers email address.
 
 ### Step 2: Send the generated mails
@@ -43,7 +77,7 @@ Options:
 python send_mail.py [OPTIONS] CONFIG_PATH
 
 Options:
-  --output_path PATH  [default: mails_to_sent]
+  --mails_path PATH  [default: mails_to_sent]
   --attachment_file PATH
 ```
 
@@ -57,7 +91,27 @@ Options:
 }
 ```
 
+Please note the comma is used as a receiver separator to send multiple people.
+
 * `--mails_path PATH`: The path of the mails to sent.
+
+By issuing the `send_mail.py` command,
+you will be prompted to input the corresponding password of your smtp server.
+
+```plaintext
+You are about to send the mails under "mails_to_sent". Do you want to continue? [y/N]: y
+Please enter your mail account: <sender email address in mail config>
+Please enter you mail password:
+INFO:root:Email sent to <receiver address in RECEIVER_DATA>!
+```
+
+Currently we only support the smtp server of `gmail`,
+so you may want to use the one-time app password for security concern.
+To use gmail one-time app password, please go to
+`Manage your Goolge Account > Security > Signning to Google > App passwords` and then
+`Select app > Other`
+to generate your one-time app password. The generated password could be removed anytime
+if you are sure that you won't use it anymore.
 
 ## Contributing
 See [Contributing](contributing.md)
