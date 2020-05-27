@@ -1,6 +1,6 @@
 from click.testing import CliRunner
 
-from send_mail import main
+from mail_handler.send_mail import main
 from tests.utils import (
     compare_on_sending_mail_all,
     get_all_mail_names_from_path,

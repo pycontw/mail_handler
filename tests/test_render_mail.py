@@ -2,7 +2,7 @@ import glob
 
 from click.testing import CliRunner
 
-from render_mail import main
+from mail_handler.render_mail import main
 from tests.utils import (
     compare_rendered_mail_all,
     get_all_mail_names_from_path,
