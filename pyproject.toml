@@ -61,6 +61,9 @@ version = "0.0.1"
 description = "Mail toolkit for PyCon Taiwan"
 authors = ["Lee-W <weilee.rx@gmail.com>"]
 license = "MIT"
+packages = [
+    {"include" = "mail_handler"}
+]
 
 [tool.poetry.dependencies]
 python = "^3.7"
