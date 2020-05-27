@@ -11,10 +11,22 @@ Generate emails through the template and send mails
 
 This CLI tool is designed as two steps to avoid accidental sending.
 
-### Step 1: Generate mails through the template
+### Step 1: Install pycontw-mail-handler through pipx (or install in your virtual environment)
 
 ```sh
-python render_mail.py [OPTIONS] TEMPLATE_PATH RECEIVER_DATA
+# Install pipx
+python -m pip install pipx
+
+# Install pycontw-mail-hanlder through pipx
+python -m pipx install pycontw-mail-handler
+```
+
+After install `pycontw-mail-handler`, you can run `render_mail` and `send_mail` commands in your environment.
+
+### Step 2: Generate mails through the template
+
+```sh
+render_mail [OPTIONS] TEMPLATE_PATH RECEIVER_DATA
 
 Options:
   --mails_path PATH  [default: mails_to_sent]
@@ -71,10 +83,10 @@ Or mix both of the above two types
 
 * `--mails_path PATH`: The output path of the mails. The mail will be named as the receivers email address.
 
-### Step 2: Send the generated mails
+### Step 3: Send the generated mails
 
 ```sh
-python send_mail.py [OPTIONS] CONFIG_PATH
+send_mail [OPTIONS] CONFIG_PATH
 
 Options:
   --mails_path PATH  [default: mails_to_sent]
