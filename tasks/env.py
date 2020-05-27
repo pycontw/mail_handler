@@ -6,13 +6,13 @@ from tasks.common import VENV_PREFIX
 @task
 def clean(ctx):
     """Remove virtual environement"""
-    ctx.run("pipenv --rm", warn=True)
+    ctx.run("poetry env remove 3.7", warn=True)
 
 
 @task
 def init(ctx):
     """Install production dependencies"""
-    ctx.run("pipenv install --deploy")
+    ctx.run("poetry install --no-dev")
 
 
 @task
@@ -29,6 +29,6 @@ def setup_pre_commit_hook(ctx):
 @task(optional=["without-pre-commit"])
 def init_dev(ctx, without_pre_commit=False):
     """Install development dependencies and setup pre-commit hooks"""
-    ctx.run("pipenv install --dev")
+    ctx.run("poetry install")
     if not without_pre_commit:
         setup_pre_commit_hook(ctx)

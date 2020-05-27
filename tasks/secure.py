@@ -6,7 +6,7 @@ from tasks.common import VENV_PREFIX
 @task
 def check_package(ctx):
     """Check package security"""
-    ctx.run("export PIPENV_PYUP_API_KEY='' && pipenv check")
+    ctx.run(f"{VENV_PREFIX} safety check")
 
 
 @task
