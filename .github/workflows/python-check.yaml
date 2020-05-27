@@ -1,6 +1,6 @@
-name: New commit pushed or pull request created
+name: Pull request created
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   check:
