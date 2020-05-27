@@ -226,15 +226,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#step-1-generate-mails-through-the-template" class="md-nav__link">
-    Step 1: Generate mails through the template
+  <a href="#step-1-install-pycontw-mail-handler-through-pipx-or-install-in-your-virtual-environment" class="md-nav__link">
+    Step 1: Install pycontw-mail-handler through pipx (or install in your virtual environment)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2-send-the-generated-mails" class="md-nav__link">
-    Step 2: Send the generated mails
+  <a href="#step-2-generate-mails-through-the-template" class="md-nav__link">
+    Step 2: Generate mails through the template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-send-the-generated-mails" class="md-nav__link">
+    Step 3: Send the generated mails
   </a>
   
 </li>
@@ -318,15 +325,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#step-1-generate-mails-through-the-template" class="md-nav__link">
-    Step 1: Generate mails through the template
+  <a href="#step-1-install-pycontw-mail-handler-through-pipx-or-install-in-your-virtual-environment" class="md-nav__link">
+    Step 1: Install pycontw-mail-handler through pipx (or install in your virtual environment)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2-send-the-generated-mails" class="md-nav__link">
-    Step 2: Send the generated mails
+  <a href="#step-2-generate-mails-through-the-template" class="md-nav__link">
+    Step 2: Generate mails through the template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-send-the-generated-mails" class="md-nav__link">
+    Step 3: Send the generated mails
   </a>
   
 </li>
@@ -379,8 +393,17 @@
 </ul>
 <h2 id="usage">Usage</h2>
 <p>This CLI tool is designed as two steps to avoid accidental sending.</p>
-<h3 id="step-1-generate-mails-through-the-template">Step 1: Generate mails through the template</h3>
-<pre><code class="sh">python render_mail.py [OPTIONS] TEMPLATE_PATH RECEIVER_DATA
+<h3 id="step-1-install-pycontw-mail-handler-through-pipx-or-install-in-your-virtual-environment">Step 1: Install pycontw-mail-handler through pipx (or install in your virtual environment)</h3>
+<pre><code class="sh"># Install pipx
+python -m pip install pipx
+
+# Install pycontw-mail-hanlder through pipx
+python -m pipx install pycontw-mail-handler
+</code></pre>
+
+<p>After install <code>pycontw-mail-handler</code>, you can run <code>render_mail</code> and <code>send_mail</code> commands in your environment.</p>
+<h3 id="step-2-generate-mails-through-the-template">Step 2: Generate mails through the template</h3>
+<pre><code class="sh">render_mail [OPTIONS] TEMPLATE_PATH RECEIVER_DATA
 
 Options:
   --mails_path PATH  [default: mails_to_sent]
@@ -435,8 +458,8 @@ formats are all working:</p>
 <ul>
 <li><code>--mails_path PATH</code>: The output path of the mails. The mail will be named as the receivers email address.</li>
 </ul>
-<h3 id="step-2-send-the-generated-mails">Step 2: Send the generated mails</h3>
-<pre><code class="sh">python send_mail.py [OPTIONS] CONFIG_PATH
+<h3 id="step-3-send-the-generated-mails">Step 3: Send the generated mails</h3>
+<pre><code class="sh">send_mail [OPTIONS] CONFIG_PATH
 
 Options:
   --mails_path PATH  [default: mails_to_sent]
