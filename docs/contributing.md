@@ -24,12 +24,12 @@ git checkout -b [YOUR FEATURE]
 
 ```sh
 python -m pip install pipx
-python -m pipx install pipenv invoke
+python -m pipx install poetry invoke
 python -m pipx ensurepath
 ```
 
 * [pipx](https://github.com/pipxproject/pipx): for python tool management
-* [pipenv](https://github.com/pypa/pipenv): for dependency management
+* [poetry](https://python-poetry.org/): for dependency management
 * [invoke](https://github.com/pyinvoke/invoke): for task management
 
 ### Step 6. Create your local Python virtual environment and install dependencies
