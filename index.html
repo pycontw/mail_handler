@@ -467,6 +467,9 @@ formats are all working:</p>
 <ul>
 <li><code>--mails_path PATH</code>: The output path of the mails. The mail will be named as the receivers email address.</li>
 </ul>
+<p>Usage example:</p>
+<pre><code>render_mail  ./templates/sponsorship/spam_sponsors_2020.j2 examples/sponsorship/spam_sponsors_2020.json
+</code></pre>
 <h3 id="step-3-send-the-generated-mails">Step 3: Send the generated mails</h3>
 <pre><code class="language-sh">send_mail [OPTIONS] CONFIG_PATH
 
@@ -487,6 +490,9 @@ Options:
 <ul>
 <li><code>--mails_path PATH</code>: The path of the mails to sent.</li>
 </ul>
+<p>Usage example:</p>
+<pre><code>send_mail ./examples/sponsorship/spam_sponsors_2020_mail_config.json
+</code></pre>
 <p>By issuing the <code>send_mail.py</code> command,
 you will be prompted to input the corresponding password of your smtp server.</p>
 <pre><code class="language-plaintext">You are about to send the mails under &quot;mails_to_sent&quot;. Do you want to continue? [y/N]: y
