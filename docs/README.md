@@ -83,6 +83,13 @@ Or mix both of the above two types
 
 * `--mails_path PATH`: The output path of the mails. The mail will be named as the receivers email address.
 
+Usage example:
+
+```
+render_mail  ./templates/sponsorship/spam_sponsors_2020.j2 examples/sponsorship/spam_sponsors_2020.json
+```
+
+
 ### Step 3: Send the generated mails
 
 ```sh
@@ -106,6 +113,13 @@ Options:
 Please note the comma is used as a receiver separator to send multiple people.
 
 * `--mails_path PATH`: The path of the mails to sent.
+
+Usage example:
+
+```
+send_mail ./examples/sponsorship/spam_sponsors_2020_mail_config.json
+```
+
 
 By issuing the `send_mail.py` command,
 you will be prompted to input the corresponding password of your smtp server.
