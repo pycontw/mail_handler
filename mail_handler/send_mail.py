@@ -107,7 +107,7 @@ def main(mails_path, config_path, debug, separator, attachment_file=None):
         password = click.prompt(
             "Please enter you mail password", type=str, hide_input=True
         )
-        with open(config_path, "r") as config_file:
+        with open(config_path, "r", encoding="utf-8") as config_file:
             config = json.load(config_file)
 
         address_suffix_to_content = load_mails(mails_path)
