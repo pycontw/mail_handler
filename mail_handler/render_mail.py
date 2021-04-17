@@ -57,7 +57,7 @@ def main(template_path, receiver_data, separator, output_path):
         logging.info('Create directory "%s"', output_path)
         Path(output_path).mkdir(parents=True)
 
-    with open(receiver_data, "r") as input_file:
+    with open(receiver_data, "r", encoding="utf-8") as input_file:
         data = json.load(input_file)
         common_data = data["common_data"]
         unique_data = data["unique_data"]
