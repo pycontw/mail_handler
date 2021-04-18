@@ -51,8 +51,12 @@ def export_mails(recv_to_mail, output_path):
     type=click.Path(exists=False),
     default="mails_to_sent",
     show_default=True,
+    help="Output path of rendered mails",
 )
 def main(template_path, receiver_data, separator, output_path):
+    """
+    Application entry point
+    """
     if not os.path.isdir(output_path):
         logging.info('Create directory "%s"', output_path)
         Path(output_path).mkdir(parents=True)
