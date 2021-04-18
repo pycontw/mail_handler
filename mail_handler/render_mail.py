@@ -10,7 +10,7 @@ from jinja2 import Template
 
 
 def load_template(tmpl_path: Path) -> Template:
-    with open(tmpl_path, "r") as input_tmpl:
+    with open(tmpl_path, "r", encoding="utf-8") as input_tmpl:
         return Template(input_tmpl.read())
 
 
@@ -33,7 +33,7 @@ def render_all_content(
 
 def export_mails(recv_to_mail, output_path):
     for mail, mail_content in recv_to_mail.items():
-        with open(output_path / Path(mail), "w") as output_file:
+        with open(output_path / Path(mail), "w", encoding="utf-8") as output_file:
             output_file.write(mail_content)
 
 
@@ -51,8 +51,12 @@ def export_mails(recv_to_mail, output_path):
     type=click.Path(exists=False),
     default="mails_to_sent",
     show_default=True,
+    help="Output path of rendered mails",
 )
 def main(template_path, receiver_data, separator, output_path):
+    """
+    Application entry point
+    """
     if not os.path.isdir(output_path):
         logging.info('Create directory "%s"', output_path)
         Path(output_path).mkdir(parents=True)
