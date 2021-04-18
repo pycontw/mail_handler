@@ -1,6 +1,6 @@
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "0.1.0"
+version = "0.1.1"
 tag_format = "v$version"
 version_files = [
     "pyproject.toml:^version"
@@ -60,10 +60,11 @@ use_parentheses = true
 
 [tool.poetry]
 name = "pycontw-mail-handler"
-version = "0.1.0"
+version = "0.1.1"
 description = "Mail toolkit for PyCon Taiwan"
 authors = ["Lee-W <weilee.rx@gmail.com>"]
 license = "MIT"
+readme = "docs/README.md"
 packages = [
     {"include" = "mail_handler"}
 ]
@@ -102,7 +103,7 @@ commitizen = "^1.19.2"
 pre-commit = "^2.2.0"
 # documentation
 mkdocs = "^1.1"
-mkdocs-material = "^5.0.1"
+mkdocs-material = "^7.1.0"
 tox = "^3.15.1"
 
 [build-system]
