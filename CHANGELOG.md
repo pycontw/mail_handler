@@ -1,4 +1,10 @@
 
+## v0.2.0 (2021-04-18)
+
+### Feat
+
+- **render_mail**: add more description including command help
+
 ## v0.1.1 (2021-04-18)
 
 ### Fix
