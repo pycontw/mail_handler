@@ -30,6 +30,7 @@ render_mail [OPTIONS] TEMPLATE_PATH RECEIVER_DATA
 
 Options:
   --mails_path PATH  [default: mails_to_sent]
+  --separator ' TEXT '
 ```
 
 * `TEMPLATE_PATH`: The path to the jinja2 template.
