@@ -21,7 +21,7 @@ logging.basicConfig(level=logging.INFO)
 def load_mails(input_dir) -> Dict[str, str]:
     addr_to_content = dict()
     for filename in os.listdir(input_dir):
-        with open(f"{input_dir}/{filename}", "r") as input_file:
+        with open(f"{input_dir}/{filename}", "r", encoding="utf-8") as input_file:
             if "@" not in filename:
                 continue
             addr_to_content[filename] = input_file.read()
