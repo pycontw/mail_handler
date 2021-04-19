@@ -44,7 +44,7 @@ def export_mails(recv_to_mail, output_path):
     "--separator",
     default="",
     show_default=False,
-    help="Separator used for subject suffix",
+    help="Separator used for subject suffix. It is disabled with empty string by default.",
 )
 @click.option(
     "--output_path",
