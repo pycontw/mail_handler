@@ -21,7 +21,7 @@ logging.basicConfig(level=logging.INFO)
 def load_mails(input_dir) -> Dict[str, str]:
     addr_to_content = dict()
     for filename in os.listdir(input_dir):
-        with open(f"{input_dir}/{filename}", "r") as input_file:
+        with open(f"{input_dir}/{filename}", "r", encoding="utf-8") as input_file:
             if "@" not in filename:
                 continue
             addr_to_content[filename] = input_file.read()
@@ -47,7 +47,7 @@ def build_mail(
     mail["CC"] = config.get("CC", "")
 
     if attachment_file:
-        with open(attachment_file, "rb") as f:
+        with open(attachment_file, "rb", encoding="utf-8") as f:
             attach = MIMEApplication(f.read())
         attach.add_header(
             "Content-Disposition",
@@ -77,7 +77,7 @@ def dump_mail(mail, suffix, debug_dump_path="/tmp/mail_handler"):
     else:
         dump_path = "/".join((debug_dump_path, "no-separator"))
     Path(dump_path).mkdir(parents=True, exist_ok=True)
-    with open(f"{dump_path}/{mail['To']}", "wb") as dumpf:
+    with open(f"{dump_path}/{mail['To']}", "wb", encoding="utf-8") as dumpf:
         pickle.dump(mail, dumpf)
     print(f"Debug mode is on. Dump mails to {dump_path} instead of sending them.")
 
