@@ -1,4 +1,10 @@
 
+## v0.3.0 (2021-04-19)
+
+### Feat
+
+- **render_mail**: click.option help information about separator
+
 ## v0.2.0 (2021-04-18)
 
 ### Feat
