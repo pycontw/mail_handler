@@ -1,4 +1,11 @@
 
+## v0.3.1 (2021-04-20)
+
+### Fix
+
+- **encoding**: remove
+- **encoding**: default to utf-8
+
 ## v0.3.0 (2021-04-19)
 
 ### Feat
