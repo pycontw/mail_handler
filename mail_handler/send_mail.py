@@ -9,6 +9,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from pathlib import Path
 from typing import Dict
+from collections import defaultdict
 
 import click
 
@@ -19,12 +20,20 @@ logging.basicConfig(level=logging.INFO)
 
 
 def load_mails(input_dir) -> Dict[str, str]:
-    addr_to_content = dict()
+    # addr_to_content = dict()
+    addr_to_content = defaultdict(dict)
     for filename in os.listdir(input_dir):
         with open(f"{input_dir}/{filename}", "r", encoding="utf-8") as input_file:
             if "@" not in filename:
                 continue
-            addr_to_content[filename] = input_file.read()
+            # remove "__" at multiple mails with same address
+            filename = filename.split("__")
+            if len(filename)>1:
+                filename = ''.join(filename[:-1])
+            else:
+                filename = filename[0]
+
+            addr_to_content[filename].append(input_file.read())
     return addr_to_content
 
 
@@ -110,25 +119,28 @@ def main(mails_path, config_path, debug, separator, attachment_file=None):
         with open(config_path, "r", encoding="utf-8") as config_file:
             config = json.load(config_file)
 
+        # now address_suffix id defaultdict with values of list
         address_suffix_to_content = load_mails(mails_path)
-        for mail_addr_suffix, mail_content in address_suffix_to_content.items():
-            mail_addr, *mail_suffix_and_more = mail_addr_suffix.split(
-                separator, maxsplit=1
-            )
-            mail_suffix = mail_suffix_and_more[0] if mail_suffix_and_more else None
-            mail = build_mail(
-                mail_addr,
-                mail_content,
-                config,
-                separator,
-                attachment_file=attachment_file,
-                suffix=mail_suffix,
-            )
 
-            if debug:
-                dump_mail(mail, mail_suffix)
-            else:
-                send_mail(mail, user, password)
+        for mail_addr_suffix, mails_content in address_suffix_to_content.items():
+            for mail_content in mails_content:
+                mail_addr, *mail_suffix_and_more = mail_addr_suffix.split(
+                    separator, maxsplit=1
+                )
+                mail_suffix = mail_suffix_and_more[0] if mail_suffix_and_more else None
+                mail = build_mail(
+                    mail_addr,
+                    mail_content,
+                    config,
+                    separator,
+                    attachment_file=attachment_file,
+                    suffix=mail_suffix,
+                )
+
+                if debug:
+                    dump_mail(mail, mail_suffix)
+                else:
+                    send_mail(mail, user, password)
 
 
 # pylint: disable=no-value-for-parameter
