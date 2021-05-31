@@ -2,12 +2,11 @@
 import json
 import logging
 import os
+from collections import defaultdict
 from pathlib import Path
 from typing import Dict, List
 
 import click
-import glob
-from collections import defaultdict
 from jinja2 import Template
 
 
@@ -32,26 +31,12 @@ def render_all_content(
             subject = data["receiver_email"]
         mail_defdict[subject] += 1
         # multi-mail
-        if mail_defualt[subject]>1:
-            subject = "{}__{:03n}".format(subject,mail_defdict[subject])
+        if mail_defdict[subject] > 1:
+            subject = "{}__{:03n}".format(subject, mail_defdict[subject])
 
         recv_to_mail[subject] = template.render(**data)
     return recv_to_mail
 
-def add_fcount( output_path, mail):
-    mflist = glob.glob(output_path+'/'+mail+'*')
-    mflist.sort()
-    print(mflist)
-    last_count = str.split(mflist[-1],"__")[-1]
-    print(last_count)
-    try:
-        last_count = int(last_count)
-    except ValueError:
-        last_count = 0
-    this_count = last_count+1
-    mailfn = "{}/{}__{:03n}".format(output_path,mail,this_count)
-
-    return mailfn
 
 def export_mails(recv_to_mail, output_path):
     for mail, mail_content in recv_to_mail.items():

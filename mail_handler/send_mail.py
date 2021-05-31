@@ -4,12 +4,12 @@ import logging
 import os
 import pickle
 import smtplib
+from collections import defaultdict
 from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from pathlib import Path
 from typing import Dict
-from collections import defaultdict
 
 import click
 
@@ -28,8 +28,8 @@ def load_mails(input_dir) -> Dict[str, str]:
                 continue
             # remove "__" at multiple mails with same address
             filename = filename.split("__")
-            if len(filename)>1:
-                filename = ''.join(filename[:-1])
+            if len(filename) > 1:
+                filename = "".join(filename[:-1])
             else:
                 filename = filename[0]
 
