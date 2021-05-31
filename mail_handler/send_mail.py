@@ -9,7 +9,7 @@ from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from pathlib import Path
-from typing import Dict
+from typing import Dict, DefaultDict
 
 import click
 
@@ -19,9 +19,9 @@ MAIL_SERVER_CONFIG = {"gmail": {"host": "smtp.gmail.com", "port": 465}}
 logging.basicConfig(level=logging.INFO)
 
 
-def load_mails(input_dir) -> Dict[str, str]:
+def load_mails(input_dir) -> DefaultDict[str, list]:
     # addr_to_content = dict()
-    addr_to_content = defaultdict(dict)
+    addr_to_content = defaultdict(list)
     for filename in os.listdir(input_dir):
         with open(f"{input_dir}/{filename}", "r", encoding="utf-8") as input_file:
             if "@" not in filename:
