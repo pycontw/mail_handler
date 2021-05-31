@@ -4,7 +4,7 @@ import logging
 import os
 from collections import defaultdict
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, DefaultDict
 
 import click
 from jinja2 import Template
@@ -21,8 +21,8 @@ def render_all_content(
     unique_data: List[Dict[str, str]],
     separator: str,
 ) -> Dict[str, str]:
-    recv_to_mail = dict(int)
-    mail_defdict = defaultdict()
+    recv_to_mail = dict()
+    mail_defdict = defaultdict(int)  # type: DefaultDict[str, int]
     for data in unique_data:
         data.update(common_data)
         if separator:
