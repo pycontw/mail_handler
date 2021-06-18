@@ -4,7 +4,7 @@ import logging
 import os
 from collections import defaultdict
 from pathlib import Path
-from typing import Dict, List, DefaultDict
+from typing import DefaultDict, Dict, List
 
 import click
 from jinja2 import Template
