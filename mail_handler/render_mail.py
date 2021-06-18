@@ -2,8 +2,9 @@
 import json
 import logging
 import os
+from collections import defaultdict
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, DefaultDict
 
 import click
 from jinja2 import Template
@@ -21,12 +22,18 @@ def render_all_content(
     separator: str,
 ) -> Dict[str, str]:
     recv_to_mail = dict()
+    mail_defdict = defaultdict(int)  # type: DefaultDict[str, int]
     for data in unique_data:
         data.update(common_data)
         if separator:
             subject = separator.join([data["receiver_email"], data["receiver_name"]])
         else:
             subject = data["receiver_email"]
+        mail_defdict[subject] += 1
+        # multi-mail
+        if mail_defdict[subject] > 1:
+            subject = "{}__{:03n}".format(subject, mail_defdict[subject])
+
         recv_to_mail[subject] = template.render(**data)
     return recv_to_mail
 
