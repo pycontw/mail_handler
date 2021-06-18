@@ -1,4 +1,12 @@
 
+## v0.3.2 (2021-06-18)
+
+### Fix
+
+- **mail_handler/render_mail.py-mail_hander/send_mail.py**: fix sending multiple mails with same mail address
+- **send_mail.py-rend_mail.py**: fix big about multiple mails with same mail address
+- **send_mail,-rend_mail**: fix bug of multiple mails with same mail address
+
 ## v0.3.1 (2021-04-20)
 
 ### Fix
