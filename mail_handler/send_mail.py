@@ -8,6 +8,7 @@ from collections import defaultdict
 from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from email.utils import formataddr
 from pathlib import Path
 from typing import DefaultDict, Dict
 
@@ -51,7 +52,7 @@ def build_mail(
         mail["Subject"] = "".join([config.get("Subject", ""), separator, suffix])
     else:
         mail["Subject"] = config.get("Subject", "")
-    mail["From"] = config.get("From", "")
+    mail["From"] = formataddr((config.get("SenderName", ""), config.get("From", "")))
     mail["To"] = receiver_addr
     mail["CC"] = config.get("CC", "")
 
