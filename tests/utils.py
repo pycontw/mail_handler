@@ -2,6 +2,7 @@ import filecmp
 import json
 import os
 import pickle
+from email.utils import parseaddr
 
 path_mail_config = "./examples/sponsorship/spam_sponsors_2020_mail_config.json"
 path_receivers = "./examples/sponsorship/spam_sponsors_2020.json"
@@ -77,7 +78,13 @@ def compare_on_sending_mail(target, receivers):
 
     with open(target, "rb") as f:
         target_content = pickle.load(f)
-        if target_content["From"] != mail_config["From"]:
+        target_content_sender_name, target_content_from = parseaddr(
+            target_content["From"]
+        )
+        if target_content_from != mail_config["From"]:
+            return False
+
+        if target_content_sender_name != mail_config["SenderName"]:
             return False
 
         if mail_name != target_content["To"]:
