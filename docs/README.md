@@ -1,6 +1,7 @@
 # Mail Handler
 
-Generate emails through the template and send mails
+Generate emails through the template and send mails.
+If you are user of Mail Handler, please refer to this [docs](https://github.com/pycontw/mail_handler/blob/master/docs/2021_mail-handler_user_guide.md).
 
 ## Prerequisite
 
