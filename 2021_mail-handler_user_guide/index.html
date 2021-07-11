@@ -1,0 +1,460 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.1">
+    
+    
+      
+        <title>pycontw-mail-handler 使用手冊 - Mail Handler</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.9299cb39.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pycontw-mail-handler" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Mail Handler" class="md-header__button md-logo" aria-label="Mail Handler" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mail Handler
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              pycontw-mail-handler 使用手冊
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/pycontw/mail_handler/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Mail Handler" class="md-nav__button md-logo" aria-label="Mail Handler" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Mail Handler
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/pycontw/mail_handler/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    建立信件內容
+  </a>
+  
+    <nav class="md-nav" aria-label="建立信件內容">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#render_mail-options-template_path-receiver_data" class="md-nav__link">
+    render_mail [OPTIONS] TEMPLATE_PATH RECEIVER_DATA
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    使用範例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    寄出
+  </a>
+  
+    <nav class="md-nav" aria-label="寄出">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#send_mail-options-config_path" class="md-nav__link">
+    send_mail [OPTIONS] CONFIG_PATH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    使用範例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    驗證問題
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    補充 / 常見問題
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/pycontw/mail_handler/edit/master/docs/2021_mail-handler_user_guide.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="pycontw-mail-handler">pycontw-mail-handler 使用手冊</h1>
+<h2 id="_1">建立信件內容</h2>
+<h3 id="render_mail-options-template_path-receiver_data"><code>render_mail [OPTIONS] TEMPLATE_PATH RECEIVER_DATA</code></h3>
+<ul>
+<li><strong>[OPTIONS]</strong>
+  <code>--mails_path PATH  [default: mails_to_sent]</code>：儲存信件內容位置，預設會新增於當前目錄下新增的 mails_to_sent 的資料夾中
+  <code>--separator ' TEXT '</code>：設定輸出信件檔名分隔符號/文字</li>
+<li><strong>TEMPLATE_PATH</strong>：內容基本格式檔案位置，接受 <em>.j2</em> 檔案</li>
+<li><strong>RECEIVER_DATA</strong>：需替換的輸入資料檔案位置，接受 <em>.json</em> 檔案<ul>
+<li>預設需有以下格式資訊
+    <code>{
+        "common_data": {},
+        "unique_data": [
+            {"receiver_email": "somerec@somedomain"}
+        ]
+    }</code></li>
+<li>common_data：每封 email 共用之資料</li>
+<li>unique_data：每封 email 所需特定資料</li>
+</ul>
+</li>
+</ul>
+<h3 id="_2">使用範例</h3>
+<ul>
+<li>修改 <font color=#808080>template</font> 文件（可參考 <em>sponsors_invite.j2</em> 撰寫）</li>
+<li>修改 <font color=#808080>reveiver data</font> 文件（可參考 <em>sponsors_invite</em> 撰寫）
+<img alt="" src="https://i.imgur.com/Trf5AbK.png" /></li>
+<li>使用 <font color=#808080>render_mail</font> 輸出信件內容
+    <code>render_mail templates/sponsorship/spam_sponsors_2020 examples/sponsorship/spam_sponsors_2020.json</code><ul>
+<li>templates 的資料夾下可參考範例 jinja 格式檔案</li>
+<li>examples 資料夾下可參考 receiver data 範例 json 格式檔案</li>
+<li>如添加 <code>--separator '-'</code>，則輸出信件檔名為 <em>{receiveremail}-{receviername}</em>
+    <code>render_mail --separator '-' &lt;TEMPLATE_PATH&gt; &lt;RECEIVER_DATA&gt;</code></li>
+</ul>
+</li>
+<li>完成後會在目錄下建立一個 <em>mails_to_sent</em> 的資料夾，內有以receiver_email 為檔名之檔案，確認輸出無誤
+<img alt="" src="https://i.imgur.com/YHD7Ycm.png" /></li>
+<li>確認內文
+<img alt="" src="https://i.imgur.com/gpcuZA7.png" /></li>
+</ul>
+<h2 id="_3">寄出</h2>
+<h3 id="send_mail-options-config_path"><code>send_mail [OPTIONS] CONFIG_PATH</code></h3>
+<ul>
+<li><strong>[OPTIONS]</strong>
+  <code>--mails_path PATH  [default: mails_to_sent]</code>：信件內容檔案夾位置，預設為 mails_to_sent，如非預設位置才使用
+  <code>--attachment_file PATH</code>：如需夾帶附件可使用此填寫附件檔案位置
+  <code>--separator ' TEXT '</code>：<code>render_mail</code> 如有使用到 separator 則此也必須加上相同項目</li>
+<li><strong>CONFIG_PATH</strong>：寄件者資料設定檔，接受 <em>.json</em> 檔案<ul>
+<li>需具備以下格式資訊，以 <code>,</code> 分隔多個收件者
+<code>{
+    "Subject": "some subject",
+    "From": "somebody@somedomain",
+    "CC": "somebody1@somedomain, somebody2@somedomain"
+}</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="_4">使用範例</h3>
+<ul>
+<li>修改 <font color=#808080>config</font> 檔案內容（可參考 <em>mail_config.json</em> 撰寫）</li>
+<li>使用 <font color=#808080>send_mail</font> 寄送 mail_to_sent 資料夾內之信件
+    <code>send_mail examples/sponsorship/spam_sponsors_2020_mail_config.json</code><ul>
+<li>如在 render_mail 時有使用到 <code>--separator</code> 須加上相同參數
+    <code>send_mail --separator '-' &lt;CONFIG_FILE_PATH&gt;</code></li>
+</ul>
+</li>
+<li>系統詢問是否確認寄出，輸入 <code>y</code>
+    <code>You are about to send the mails under "mails_to_sent". Do you want to continue? [y/N]:  y</code></li>
+<li>輸入寄件者 email account (目前僅支援 gmail)
+    <code>Please enter your mail account: xxxxxxxx@gmail.com</code></li>
+<li>輸入設定過的 password (設定方式請參考 驗證問題 部分進行設定)
+    <code>Please enter you mail password: xxxxxxxx</code></li>
+<li>寄送成功系統會顯示以下資訊
+    <code>Email sent to xxxxxxxx@gmail.com!</code></li>
+<li>收件者收到的透過 mail handler 寄送的信件
+<img alt="" src="https://i.imgur.com/4NamR1X.png" /></li>
+</ul>
+<h2 id="_5">驗證問題</h2>
+<ul>
+<li>在 <strong>登入 Google 的部分中</strong>，將 <strong>兩步驟驗證</strong> 修改為 <strong>開啟</strong>，開啟後會出現 <strong>應用程式密碼</strong> 欄位，點選
+<img alt="" src="https://i.imgur.com/wR2tsdZ.png" /></li>
+<li>選擇 <strong>其他(自訂名稱)</strong>，隨意填入名稱可辨識為何種用途即可，點選產生
+<img alt="" src="https://i.imgur.com/Cvo3HC3.png" /></li>
+<li>此時會跳出 <strong>系統產生的應用程式密碼</strong> 視窗，記下此組密碼，此組密碼即在使用 mail handler 時所需的 password
+<img alt="" src="https://i.imgur.com/FZv4N7i.png" /></li>
+</ul>
+<h2 id="_6">補充 / 常見問題</h2>
+<ul>
+<li>如需安裝請參考 <a href="https://github.com/pycontw/mail_handler">pycontw/mail_handler@GitHub</a></li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.7353b375.min.js"></script>
+      
+    
+  </body>
+</html>
