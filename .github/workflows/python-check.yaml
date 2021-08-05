@@ -1,25 +1,25 @@
-name: Pull request created
+name: New pull request received
 
-on: [pull_request]
+on: [pull_request, workflow_dispatch]
 
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
       - name: Check out
-        uses: actions/checkout@v2
+        uses: actions/checkout@main
         with:
           fetch-depth: 0
 
       - name: Set up Python 3.7
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@main
         with:
           python-version: 3.7
 
       - name: Install dependencies
         run: |
-          python -m pip install poetry invoke
-          inv env.init-dev -w
+          python -m pip install -U pip poetry invoke
+          inv env.init-dev --no-pre-commit
 
       - name: Style check
         run: |
