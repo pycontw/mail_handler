@@ -3,12 +3,12 @@
 ## Types of changes
 <!--Please remove the types that does not apply to this change-->
 
-* **Bugfix**
-* **New feature**
-* **Refactoring**
-* **Breaking change** (any change that would cause existing functionality to not work as expected)
-* **Documentation Update**
-* **Other (please describe)**
+- **Bugfix**
+- **New feature**
+- **Refactoring**
+- **Breaking change** (any change that would cause existing functionality to not work as expected)
+- **Documentation Update**
+- **Other (please describe)**
 
 ## Description
 <!--Describe what the change is**-->

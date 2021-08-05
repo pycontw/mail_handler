@@ -45,7 +45,9 @@ def get_receivers():
 
 
 def compare_on_sending_mail_all(
-    targets, target_prefix="../examples", separator=" - ",
+    targets,
+    target_prefix="../examples",
+    separator=" - ",
 ):
     receivers = get_receivers()
     receiver_emails = []

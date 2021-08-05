@@ -22,13 +22,14 @@ def setup_pre_commit_hook(ctx):
     ctx.run(
         f"{VENV_PREFIX} pre-commit install -t pre-commit & "
         f"{VENV_PREFIX} pre-commit install -t pre-push & "
-        f"{VENV_PREFIX} pre-commit install -t commit-msg"
+        f"{VENV_PREFIX} pre-commit install -t commit-msg &"
+        f"{VENV_PREFIX} pre-commit autoupdate"
     )
 
 
-@task(optional=["without-pre-commit"])
-def init_dev(ctx, without_pre_commit=False):
+@task(optional=["no-pre-commit"])
+def init_dev(ctx, no_pre_commit=False):
     """Install development dependencies and setup pre-commit hooks"""
     ctx.run("poetry install")
-    if not without_pre_commit:
+    if not no_pre_commit:
         setup_pre_commit_hook(ctx)
