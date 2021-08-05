@@ -130,7 +130,7 @@ pytest-cov = "^2.8.1"
 pytest-mock = "^3.0.0"
 pytest-xdist = "^1.31.0"
 hypothesis = "^5.8.0"
-coverage = {extras = ["toml"], version = "^5.0.4"}
+coverage = {extras = ["toml"], version = "^6.0b1"}
 tox = "^3.15.1"
 # style
 flake8 = "^3.7.9"
