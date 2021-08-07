@@ -1,4 +1,10 @@
 
+## v0.4.1 (2021-08-07)
+
+### Refactor
+
+- update configurations from  Lee-W/cookiecutter-python-template
+
 ## v0.4.0 (2021-07-07)
 
 ### Feat

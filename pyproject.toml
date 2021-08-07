@@ -1,6 +1,6 @@
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "0.4.0"
+version = "0.4.1"
 tag_format = "v$version"
 version_files = [
     "pyproject.toml:^version"
@@ -103,7 +103,7 @@ norecursedirs = [
 
 [tool.poetry]
 name = "pycontw-mail-handler"
-version = "0.4.0"
+version = "0.4.1"
 description = "Mail toolkit for PyCon Taiwan"
 authors = ["Lee-W <weilee.rx@gmail.com>"]
 license = "MIT"
