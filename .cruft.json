@@ -1,6 +1,6 @@
 {
   "template": "git@github.com:Lee-W/cookiecutter-python-template.git",
-  "commit": "70dbb7ed64e78d2c7eba234046252528c5921489",
+  "commit": "de3aaf4ec023a27696ee1de45838d53c72a16da6",
   "context": {
     "cookiecutter": {
       "project_name": "mail handler",
