@@ -117,6 +117,7 @@ Options:
 {
     "Subject": "some subject",
     "From": "somebody@somedomain",
+    "SenderName": "your name",
     "CC": "somebody1@somedomain, somebody2@somedomain"
 }
 ```
