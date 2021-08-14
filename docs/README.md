@@ -2,15 +2,15 @@
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=flat-square)](https://conventionalcommits.org)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Github Actions](https://github.com/pycontw/mail_handler/actions/workflows/python-check.yaml/badge.svg)](https://github.com/pycontw/mail_handler/wayback-machine-saver/actions/workflows/python-check.yaml)
-[![PyPI Package latest release](https://img.shields.io/pypi/v/mail_handler.svg?style=flat-square)](https://pypi.org/project/mail_handler/)
-[![PyPI Package download count (per month)](https://img.shields.io/pypi/dm/mail_handler?style=flat-square)](https://pypi.org/project/mail_handler/)
-[![Supported versions](https://img.shields.io/pypi/pyversions/mail_handler.svg?style=flat-square)](https://pypi.org/project/mail_handler/)
+[![PyPI Package latest release](https://img.shields.io/pypi/v/pycontw_mail_handler.svg?style=flat-square)](https://pypi.org/project/pycontw_mail_handler/)
+[![PyPI Package download count (per month)](https://img.shields.io/pypi/dm/pycontw_mail_handler?style=flat-square)](https://pypi.org/project/pycontw_mail_handler/)
+[![Supported versions](https://img.shields.io/pypi/pyversions/pycontw_mail_handler.svg?style=flat-square)](https://pypi.org/project/pycontw_mail_handler/)
 
 
 # Mail Handler
 
 Generate emails through the template and send mails.
-If you are user of Mail Handler, please refer to this [docs](https://github.com/pycontw/mail_handler/blob/master/docs/2021_mail-handler_user_guide.md).
+If you are user of Mail Handler, please refer to this [docs](user_guide.md).
 
 ## Prerequisite
 
