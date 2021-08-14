@@ -2,6 +2,7 @@ site_name: Mail Handler
 nav:
   - Home: README.md
   - Contributing: contributing.md
+  - User Guide (zh-hant): user_guide.md
 theme:
   name: 'material'
 repo_url: https://github.com/pycontw/mail_handler
