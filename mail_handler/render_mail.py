@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import csv
 import json
 import logging
 import os
@@ -60,7 +61,12 @@ def export_mails(recv_to_mail, output_path):
     show_default=True,
     help="Output path of rendered mails",
 )
-def main(template_path, receiver_data, separator, output_path):
+@click.option(
+    "--unique_csv",
+    type=click.Path(exists=True),
+    help="Use CSV file to import unique data",
+)
+def main(template_path, receiver_data, separator, output_path, unique_csv):
     """
     Application entry point
     """
@@ -68,10 +74,21 @@ def main(template_path, receiver_data, separator, output_path):
         logging.info('Create directory "%s"', output_path)
         Path(output_path).mkdir(parents=True)
 
-    with open(receiver_data, "r", encoding="utf-8") as input_file:
-        data = json.load(input_file)
-        common_data = data["common_data"]
-        unique_data = data["unique_data"]
+    if unique_csv:
+        with open(receiver_data, "r", encoding="utf-8") as input_file:
+            data = json.load(input_file)
+            common_data = data["common_data"]
+        with open(unique_csv, "r", encoding="utf-8-sig") as input_file:
+            data = csv.DictReader(input_file)
+            unique_data = []
+            for row in data:
+                unique_data.append(row)
+            print(unique_data)
+    else:
+        with open(receiver_data, "r", encoding="utf-8") as input_file:
+            data = json.load(input_file)
+            common_data = data["common_data"]
+            unique_data = data["unique_data"]
 
     template = load_template(template_path)
     recv_to_mail = render_all_content(template, common_data, unique_data, separator)
