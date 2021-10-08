@@ -1,4 +1,14 @@
 
+## v0.5.0 (2021-10-08)
+
+### Fix
+
+- **render_mail.py**: remove redundant code
+
+### Feat
+
+- **render_mail.py**: add csv option for user to import their unique data
+
 ## v0.4.1 (2021-08-07)
 
 ### Refactor
