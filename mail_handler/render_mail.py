@@ -83,7 +83,6 @@ def main(template_path, receiver_data, separator, output_path, unique_csv):
             unique_data = []
             for row in data:
                 unique_data.append(row)
-            print(unique_data)
     else:
         with open(receiver_data, "r", encoding="utf-8") as input_file:
             data = json.load(input_file)
