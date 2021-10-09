@@ -5,7 +5,7 @@ import logging
 import os
 from collections import defaultdict
 from pathlib import Path
-from typing import DefaultDict, Dict, List
+from typing import DefaultDict, Dict, Sequence
 
 import click
 from jinja2 import Template
@@ -19,7 +19,7 @@ def load_template(tmpl_path: str) -> Template:
 def render_all_content(
     template: Template,
     common_data: Dict[str, str],
-    unique_data: List[Dict[str, str]],
+    unique_data: Sequence[Dict[str, str]],
     separator: str,
 ) -> Dict[str, str]:
     addr_to_content: Dict[str, str] = dict()
