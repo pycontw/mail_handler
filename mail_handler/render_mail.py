@@ -39,7 +39,7 @@ def render_all_content(
     return recv_to_mail
 
 
-def export_mails(recv_to_mail, output_path):
+def export_mails(recv_to_mail: Dict[str, str], output_path: Path) -> None:
     for mail, mail_content in recv_to_mail.items():
         with open(output_path / Path(mail), "w", encoding="utf-8") as output_file:
             output_file.write(mail_content)
@@ -66,7 +66,13 @@ def export_mails(recv_to_mail, output_path):
     type=click.Path(exists=True),
     help="Use CSV file to import unique data",
 )
-def main(template_path, receiver_data, separator, output_path, unique_csv):
+def main(
+    template_path: Path,
+    receiver_data: Path,
+    separator: str,
+    output_path: Path,
+    unique_csv: Path,
+) -> None:
     """
     Application entry point
     """

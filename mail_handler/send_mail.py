@@ -10,31 +10,38 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.utils import formataddr
 from pathlib import Path
-from typing import DefaultDict, Dict
+from typing import DefaultDict, Dict, List, Optional, TypedDict
 
 import click
 
-MAIL_SERVER_CONFIG = {"gmail": {"host": "smtp.gmail.com", "port": 465}}
+
+class MailConfig(TypedDict):
+    host: str
+    port: int
+
+
+MAIL_SERVER_CONFIG: Dict[str, MailConfig] = {
+    "gmail": {"host": "smtp.gmail.com", "port": 465}
+}
 
 
 logging.basicConfig(level=logging.INFO)
 
 
-def load_mails(input_dir) -> DefaultDict[str, list]:
-    # addr_to_content = dict()
+def load_mails(input_dir: str) -> DefaultDict[str, List[str]]:
     addr_to_content = defaultdict(list)
     for filename in os.listdir(input_dir):
         with open(f"{input_dir}/{filename}", "r", encoding="utf-8") as input_file:
             if "@" not in filename:
                 continue
             # remove "__" at multiple mails with same address
-            filename = filename.split("__")
-            if len(filename) > 1:
-                filename = "".join(filename[:-1])
+            filenames = filename.split("__")
+            if len(filenames) > 1:
+                concated_filenames = "".join(filenames[:-1])
             else:
-                filename = filename[0]
+                concated_filenames = filenames[0]
 
-            addr_to_content[filename].append(input_file.read())
+            addr_to_content[concated_filenames].append(input_file.read())
     return addr_to_content
 
 
@@ -43,7 +50,7 @@ def build_mail(
     mail_content: str,
     config: Dict[str, str],
     separator: str,
-    attachment_file: str = None,
+    attachment_file: Optional[str] = None,
     suffix: str = None,
 ) -> MIMEMultipart:
     mail = MIMEMultipart()
@@ -69,7 +76,12 @@ def build_mail(
     return mail
 
 
-def send_mail(mail, user, password, server_config=None):
+def send_mail(
+    mail: MIMEMultipart,
+    user: str,
+    password: str,
+    server_config: MailConfig = None,
+) -> None:
     if not server_config:
         server_config = MAIL_SERVER_CONFIG["gmail"]
 
@@ -81,7 +93,11 @@ def send_mail(mail, user, password, server_config=None):
     server.quit()
 
 
-def dump_mail(mail, suffix, debug_dump_path="/tmp/mail_handler"):
+def dump_mail(
+    mail: MIMEMultipart,
+    suffix: Optional[str],
+    debug_dump_path: str = "/tmp/mail_handler",
+) -> None:
     if suffix:
         dump_path = "/".join((debug_dump_path, "with-separator"))
     else:
@@ -108,7 +124,13 @@ def dump_mail(mail, suffix, debug_dump_path="/tmp/mail_handler"):
     help="Separator used for subject suffix",
 )
 @click.option("--attachment_file", type=click.Path(exists=False))
-def main(mails_path, config_path, debug, separator, attachment_file=None):
+def main(
+    mails_path: str,
+    config_path: str,
+    debug: bool,
+    separator: str,
+    attachment_file: Optional[str] = None,
+) -> None:
     if click.confirm(
         f'You are about to send the mails under "{mails_path}". Do you want to continue?',
         abort=True,
