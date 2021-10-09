@@ -34,14 +34,15 @@ def load_mails(input_dir: str) -> DefaultDict[str, List[str]]:
         with open(f"{input_dir}/{filename}", "r", encoding="utf-8") as input_file:
             if "@" not in filename:
                 continue
+
             # remove "__" at multiple mails with same address
             filenames = filename.split("__")
             if len(filenames) > 1:
-                concated_filenames = "".join(filenames[:-1])
+                filename = "".join(filenames[:-1])
             else:
-                concated_filenames = filenames[0]
+                filename = filenames[0]
 
-            addr_to_content[concated_filenames].append(input_file.read())
+            addr_to_content[filename].append(input_file.read())
     return addr_to_content
 
 
