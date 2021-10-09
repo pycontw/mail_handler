@@ -11,7 +11,7 @@ import click
 from jinja2 import Template
 
 
-def load_template(tmpl_path: Path) -> Template:
+def load_template(tmpl_path: str) -> Template:
     with open(tmpl_path, "r", encoding="utf-8") as input_tmpl:
         return Template(input_tmpl.read())
 
@@ -22,8 +22,8 @@ def render_all_content(
     unique_data: List[Dict[str, str]],
     separator: str,
 ) -> Dict[str, str]:
-    recv_to_mail = dict()
-    mail_defdict = defaultdict(int)  # type: DefaultDict[str, int]
+    addr_to_content: Dict[str, str] = dict()
+    mail_defdict: DefaultDict[str, int] = defaultdict(int)
     for data in unique_data:
         data.update(common_data)
         if separator:
@@ -35,13 +35,15 @@ def render_all_content(
         if mail_defdict[subject] > 1:
             subject = "{}__{:03n}".format(subject, mail_defdict[subject])
 
-        recv_to_mail[subject] = template.render(**data)
-    return recv_to_mail
+        addr_to_content[subject] = template.render(**data)
+    return addr_to_content
 
 
-def export_mails(recv_to_mail: Dict[str, str], output_path: Path) -> None:
-    for mail, mail_content in recv_to_mail.items():
-        with open(output_path / Path(mail), "w", encoding="utf-8") as output_file:
+def export_mails(recv_to_mail: Dict[str, str], output_path: str) -> None:
+    for receiver_mail, mail_content in recv_to_mail.items():
+        with open(
+            output_path / Path(receiver_mail), "w", encoding="utf-8"
+        ) as output_file:
             output_file.write(mail_content)
 
 
@@ -67,11 +69,11 @@ def export_mails(recv_to_mail: Dict[str, str], output_path: Path) -> None:
     help="Use CSV file to import unique data",
 )
 def main(
-    template_path: Path,
-    receiver_data: Path,
+    template_path: str,
+    receiver_data: str,
     separator: str,
-    output_path: Path,
-    unique_csv: Path,
+    output_path: str,
+    unique_csv: str,
 ) -> None:
     """
     Application entry point
@@ -84,11 +86,9 @@ def main(
         with open(receiver_data, "r", encoding="utf-8") as input_file:
             data = json.load(input_file)
             common_data = data["common_data"]
+
         with open(unique_csv, "r", encoding="utf-8-sig") as input_file:
-            data = csv.DictReader(input_file)
-            unique_data = []
-            for row in data:
-                unique_data.append(row)
+            unique_data = [row for row in csv.DictReader(input_file)]
     else:
         with open(receiver_data, "r", encoding="utf-8") as input_file:
             data = json.load(input_file)
