@@ -1,4 +1,10 @@
 
+## v0.5.1 (2021-10-09)
+
+### Refactor
+
+- **mail_handler**: rename variables and fix type annotation
+
 ## v0.5.0 (2021-10-08)
 
 ### Fix
