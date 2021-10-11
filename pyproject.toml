@@ -136,6 +136,7 @@ send_mail = "mail_handler.send_mail:main"
 python = "^3.7"
 click = "^7.1.2"
 jinja2 = "^2.11.2"
+typing-extensions = "^3.10.0"
 
 [tool.poetry.dev-dependencies]
 # task management
