@@ -10,7 +10,9 @@ path_attachment = "./tests/data/attachment-file/attachment01.txt"
 path_pre_rendered_mails_no_separator = "./tests/data/no-separator"
 path_pre_rendered_mails_with_separator = "./tests/data/with-separator"
 path_mails_to_send_no_separator = "/tmp/mails_to_send/no-separator"
+path_mails_to_send_no_separator_and_csv = "/tmp/mails_to_send/no-separator-and-csv"
 path_mails_to_send_with_separator = "/tmp/mails_to_send/with-separator"
+path_mails_to_send_with_separator_and_csv = "/tmp/mails_to_send/with-separator-and-csv"
 send_mail_debug_dump_path = "/tmp/mail_handler"
 
 

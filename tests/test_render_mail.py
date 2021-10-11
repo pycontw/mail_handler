@@ -7,7 +7,9 @@ from tests.utils import (
     compare_rendered_mail_all,
     get_all_mail_names_from_path,
     path_mails_to_send_no_separator,
+    path_mails_to_send_no_separator_and_csv,
     path_mails_to_send_with_separator,
+    path_mails_to_send_with_separator_and_csv,
 )
 
 path_j2 = "./templates/sponsorship/spam_sponsors_2020.j2"
@@ -54,12 +56,12 @@ def test_rendered_mail_no_separator_and_csv(all_mails_base_no_separator):
             "--unique_csv",
             path_unique_csv,
             "--output_path",
-            path_mails_to_send_no_separator,
+            path_mails_to_send_no_separator_and_csv,
         ],
     )
 
     all_mails_target = get_all_mail_names_from_path(
-        glob.glob("/".join((path_mails_to_send_no_separator, "*@*")))
+        glob.glob("/".join((path_mails_to_send_no_separator_and_csv, "*@*")))
     )
 
     assert result.exit_code == 0
@@ -67,7 +69,7 @@ def test_rendered_mail_no_separator_and_csv(all_mails_base_no_separator):
     assert compare_rendered_mail_all(
         all_mails_target,
         base_prefix=path_pre_rendered_mails_no_separator,
-        target_prefix=path_mails_to_send_no_separator,
+        target_prefix=path_mails_to_send_no_separator_and_csv,
     )
 
 
@@ -108,14 +110,14 @@ def test_rendered_mail_with_separator_dash_and_csv(all_mails_base_with_separator
             "--unique_csv",
             path_unique_csv,
             "--output_path",
-            path_mails_to_send_with_separator,
+            path_mails_to_send_with_separator_and_csv,
             "--separator",
             " - ",
         ],
     )
 
     all_mails_target = get_all_mail_names_from_path(
-        glob.glob("/".join((path_mails_to_send_with_separator, "*@*")))
+        glob.glob("/".join((path_mails_to_send_with_separator_and_csv, "*@*")))
     )
 
     assert result.exit_code == 0
@@ -123,5 +125,5 @@ def test_rendered_mail_with_separator_dash_and_csv(all_mails_base_with_separator
     assert compare_rendered_mail_all(
         all_mails_target,
         base_prefix=path_pre_rendered_mails_with_separator,
-        target_prefix=path_mails_to_send_with_separator,
+        target_prefix=path_mails_to_send_with_separator_and_csv,
     )
