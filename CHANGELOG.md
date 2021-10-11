@@ -1,4 +1,10 @@
 
+## v0.5.2 (2021-10-11)
+
+### Fix
+
+- **poetry**: typing_extensions is used as python3.7 doesn't directly support TypedDict
+
 ## v0.5.1 (2021-10-09)
 
 ### Refactor
