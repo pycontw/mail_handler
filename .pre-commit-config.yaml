@@ -4,6 +4,8 @@ repos:
     rev: v4.0.1
     hooks:
       - id: end-of-file-fixer
+        exclude:
+          &exclude_pattern '^tests/data/'
       - id: trailing-whitespace
         args: [--markdown-linebreak-ext=md]
       - id: check-case-conflict
