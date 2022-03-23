@@ -137,12 +137,27 @@ def main(
         f'You are about to send the mails under "{mails_path}". Do you want to continue?',
         abort=True,
     ):
+
+        with open(config_path, "r", encoding="utf-8") as config_file:
+            config = json.load(config_file)
+
+        smtp: MailConfig = MAIL_SERVER_CONFIG["gmail"]
+        if config.get("SMTP") is not None:
+            print(
+                f'Using configured SMTP server "{config.get("SMTP").get("Host")}:{config.get("SMTP").get("Port")}"...'
+            )
+            smtp = {
+                "host": config.get("SMTP").get("Host"),
+                "port": config.get("SMTP").get("Port"),
+            }
+
+        else:
+            print(f'{"Using default Gmail SMTP server..."}')
+
         user = click.prompt("Please enter your mail account", type=str)
         password = click.prompt(
             "Please enter you mail password", type=str, hide_input=True
         )
-        with open(config_path, "r", encoding="utf-8") as config_file:
-            config = json.load(config_file)
 
         # now address_suffix id defaultdict with values of list
         address_suffix_to_content = load_mails(mails_path)
@@ -165,7 +180,7 @@ def main(
                 if debug:
                     dump_mail(mail, mail_suffix)
                 else:
-                    send_mail(mail, user, password)
+                    send_mail(mail, user, password, smtp)
 
 
 # pylint: disable=no-value-for-parameter
