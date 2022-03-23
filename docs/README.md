@@ -139,18 +139,20 @@ you will be prompted to input the corresponding password of your smtp server.
 
 ```plaintext
 You are about to send the mails under "mails_to_sent". Do you want to continue? [y/N]: y
+Using default Gmail SMTP server...
 Please enter your mail account: <sender email address in mail config>
 Please enter you mail password:
 INFO:root:Email sent to <receiver address in RECEIVER_DATA>!
 ```
 
-Currently we only support the smtp server of `gmail`,
+Currently we use smtp server of `gmail` as default,
 so you may want to use the one-time app password for security concern.
 To use gmail one-time app password, please go to
 `Manage your Goolge Account > Security > Signning to Google > App passwords` and then
 `Select app > Other`
 to generate your one-time app password. The generated password could be removed anytime
 if you are sure that you won't use it anymore.
+If you would like to use specific smtp server, please refer user guide.
 
 ## Contributing
 See [Contributing](contributing.md)
