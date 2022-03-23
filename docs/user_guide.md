@@ -55,9 +55,19 @@
         "CC": "somebody1@somedomain, somebody2@somedomain"
     }
     ```
+    - 欲使用自訂 SMTP Server ，在此設定檔內新增
+    ```
+    {  
+        ...
+        "SMTP": {
+            "Host": "some smtp server",
+            "Port": 465
+        }
+    }
+    ```
 
 ### 使用範例
-- 修改 <font color=#808080>config</font> 檔案內容（可參考 *mail_config.json* 撰寫）
+- 修改 <font color=#808080>config</font> 檔案內容（可參考 *mail_config.json* 撰寫。如欲使用自訂 SMTP server，請參考 *mail_config_smtp.json*。）
 - 使用 <font color=#808080>send_mail</font> 寄送 mail_to_sent 資料夾內之信件
     ```
     send_mail examples/sponsorship/spam_sponsors_2020_mail_config.json
@@ -70,7 +80,16 @@
     ```
     You are about to send the mails under "mails_to_sent". Do you want to continue? [y/N]:  y
     ```
-- 輸入寄件者 email account (目前僅支援 gmail)
+- 系統提示使用預設 Gmail SMTP server 或是自訂 SMTP server
+  - 預設
+    ```
+    Using default Gmail SMTP server...
+    ```
+  - 自訂
+    ```
+    Using configured SMTP server "some smtp server:465"...
+    ```
+- 輸入寄件者 email account (欲使用預設 Gmail SMTP server 請輸入 gmail 帳號)
     ```
     Please enter your mail account: xxxxxxxx@gmail.com
     ```
