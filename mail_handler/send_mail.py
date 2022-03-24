@@ -142,7 +142,9 @@ def main(
             config = json.load(config_file)
 
         smtp: MailConfig = MAIL_SERVER_CONFIG["gmail"]
-        if config.get("SMTP") is not None:
+        if not config.get("SMTP"):
+            print(f'{"Using default Gmail SMTP server..."}')
+        else:
             print(
                 f'Using configured SMTP server "{config.get("SMTP").get("Host")}:{config.get("SMTP").get("Port")}"...'
             )
@@ -150,9 +152,6 @@ def main(
                 "host": config.get("SMTP").get("Host"),
                 "port": config.get("SMTP").get("Port"),
             }
-
-        else:
-            print(f'{"Using default Gmail SMTP server..."}')
 
         user = click.prompt("Please enter your mail account", type=str)
         password = click.prompt(
