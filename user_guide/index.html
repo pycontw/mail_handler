@@ -503,12 +503,20 @@
     "SenderName": "your name",
     "CC": "somebody1@somedomain, somebody2@somedomain"
 }</code></li>
+<li>欲使用自訂 SMTP Server ，在此設定檔內新增
+<code>{  
+    ...
+    "SMTP": {
+        "Host": "some smtp server",
+        "Port": 465
+    }
+}</code></li>
 </ul>
 </li>
 </ul>
 <h3 id="_4">使用範例</h3>
 <ul>
-<li>修改 <font color=#808080>config</font> 檔案內容（可參考 <em>mail_config.json</em> 撰寫）</li>
+<li>修改 <font color=#808080>config</font> 檔案內容（可參考 <em>mail_config.json</em> 撰寫。如欲使用自訂 SMTP server，請參考 <em>mail_config_smtp.json</em>。）</li>
 <li>使用 <font color=#808080>send_mail</font> 寄送 mail_to_sent 資料夾內之信件
     <code>send_mail examples/sponsorship/spam_sponsors_2020_mail_config.json</code><ul>
 <li>如在 render_mail 時有使用到 <code>--separator</code> 須加上相同參數
@@ -517,7 +525,12 @@
 </li>
 <li>系統詢問是否確認寄出，輸入 <code>y</code>
     <code>You are about to send the mails under "mails_to_sent". Do you want to continue? [y/N]:  y</code></li>
-<li>輸入寄件者 email account (目前僅支援 gmail)
+<li>系統提示使用預設 Gmail SMTP server 或是自訂 SMTP server</li>
+<li>預設
+    <code>Using default Gmail SMTP server...</code></li>
+<li>自訂
+    <code>Using configured SMTP server "some smtp server:465"...</code></li>
+<li>輸入寄件者 email account (欲使用預設 Gmail SMTP server 請輸入 gmail 帳號)
     <code>Please enter your mail account: xxxxxxxx@gmail.com</code></li>
 <li>輸入設定過的 password (設定方式請參考 驗證問題 部分進行設定)
     <code>Please enter you mail password: xxxxxxxx</code></li>

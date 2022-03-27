@@ -531,17 +531,19 @@ Options:
 <p>By issuing the <code>send_mail.py</code> command,
 you will be prompted to input the corresponding password of your smtp server.</p>
 <pre><code class="language-plaintext">You are about to send the mails under &quot;mails_to_sent&quot;. Do you want to continue? [y/N]: y
+Using default Gmail SMTP server...
 Please enter your mail account: &lt;sender email address in mail config&gt;
 Please enter you mail password:
 INFO:root:Email sent to &lt;receiver address in RECEIVER_DATA&gt;!
 </code></pre>
-<p>Currently we only support the smtp server of <code>gmail</code>,
+<p>Currently we use smtp server of <code>gmail</code> as default,
 so you may want to use the one-time app password for security concern.
 To use gmail one-time app password, please go to
 <code>Manage your Goolge Account &gt; Security &gt; Signning to Google &gt; App passwords</code> and then
 <code>Select app &gt; Other</code>
 to generate your one-time app password. The generated password could be removed anytime
-if you are sure that you won't use it anymore.</p>
+if you are sure that you won't use it anymore.
+If you would like to use specific smtp server, please refer user guide.</p>
 <h2 id="contributing">Contributing</h2>
 <p>See <a href="contributing/">Contributing</a></p>
 <h2 id="authors">Authors</h2>
