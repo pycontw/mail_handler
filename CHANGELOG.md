@@ -1,4 +1,14 @@
 
+## v0.6.0 (2022-03-27)
+
+### Fix
+
+- **send_mail.py**: rewite logic if SMTP is not configured
+
+### Feat
+
+- **send_mail.py**: configurable smtp server
+
 ## v0.5.2 (2021-10-11)
 
 ### Fix
