@@ -56,6 +56,7 @@ def compare_on_sending_mail_all(
     receivers = get_receivers()
     receiver_emails = []
     for mail_name in targets:
+        mail_name, ishtml = os.path.splitext(mail_name)
         for receiver in receivers["unique_data"]:
             mail_addr, *mail_suffix_and_more = mail_name.split(separator, maxsplit=1)
             mail_suffix = mail_suffix_and_more[0] if mail_suffix_and_more else None
@@ -68,6 +69,7 @@ def compare_on_sending_mail_all(
         return False
 
     for mail_name in targets:
+        mail_name, ishtml = os.path.splitext(mail_name)
         for receiver in receivers["unique_data"]:
             if receiver["receiver_email"] == mail_name:
                 if not compare_on_sending_mail(
