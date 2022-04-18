@@ -54,9 +54,14 @@ def build_mail(
     separator: str,
     attachment_file: Optional[str] = None,
     suffix: str = None,
+    html: bool = False,
 ) -> MIMEMultipart:
     mail = MIMEMultipart()
-    mail.attach(MIMEText(mail_content))
+    if html:
+        mail.attach(MIMEText(mail_content, "html", "utf-8"))
+    else:
+        mail.attach(MIMEText(mail_content))
+
     if suffix:
         mail["Subject"] = "".join([config.get("Subject", ""), separator, suffix])
     else:
@@ -73,6 +78,7 @@ def build_mail(
             "attachment",
             filename=str(os.path.basename(attachment_file)),
         )
+        attach.add_header("Content-ID", f"<{str(os.path.basename(attachment_file))}>")
         mail.attach(attach)
 
     return mail
@@ -161,7 +167,9 @@ def main(
         # now address_suffix id defaultdict with values of list
         address_suffix_to_content = load_mails(mails_path)
 
-        for mail_addr_suffix, mails_content in address_suffix_to_content.items():
+        for mail_addr_suffix_ext, mails_content in address_suffix_to_content.items():
+            mail_addr_suffix, html_ext = os.path.splitext(mail_addr_suffix_ext)
+            ishtml = True if html_ext == ".html" else False
             for mail_content in mails_content:
                 mail_addr, *mail_suffix_and_more = mail_addr_suffix.split(
                     separator, maxsplit=1
@@ -174,6 +182,7 @@ def main(
                     separator,
                     attachment_file=attachment_file,
                     suffix=mail_suffix,
+                    html=ishtml,
                 )
 
                 if debug:

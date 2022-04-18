@@ -9,6 +9,7 @@ from typing import DefaultDict, Dict, Sequence
 
 import click
 from jinja2 import Template
+from lxml import etree
 
 
 def load_template(tmpl_path: str) -> Template:
@@ -41,10 +42,23 @@ def render_all_content(
 
 def export_mails(recv_to_mail: Dict[str, str], output_path: str) -> None:
     for receiver_mail, mail_content in recv_to_mail.items():
-        with open(
-            output_path / Path(receiver_mail), "w", encoding="utf-8"
-        ) as output_file:
-            output_file.write(mail_content)
+        if "<html>" in mail_content:
+            utf8_parser = etree.HTMLParser(encoding="utf-8")
+            fixed_html = etree.tostring(
+                etree.HTML(mail_content, parser=utf8_parser),
+                encoding="UTF-8",
+                pretty_print=True,
+                method="html",
+            )
+            with open(
+                output_path / Path(receiver_mail + ".html"), "wb+"
+            ) as output_html:
+                output_html.write(fixed_html)
+        else:
+            with open(
+                output_path / Path(receiver_mail + ".txt"), "w", encoding="utf-8"
+            ) as output_file:
+                output_file.write(mail_content)
 
 
 @click.command()
