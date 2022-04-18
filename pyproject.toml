@@ -137,7 +137,7 @@ python = "^3.7"
 click = "^7.1.2"
 jinja2 = "^2.11.2"
 typing-extensions = "^3.10.0"
-lxml = "^4.71"
+lxml = "^4.7.1"
 
 [tool.poetry.dev-dependencies]
 # task management
