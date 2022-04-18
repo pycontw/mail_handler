@@ -20,8 +20,10 @@
     - unique_data：每封 email 所需特定資料
 ### 使用範例
 - 修改 <font color=#808080>template</font> 文件（可參考 *sponsors_invite.j2* 撰寫）
+  - 欲使用 HTML 寄出信件，可參考 *reviewer_html.j2* 編寫
 - 修改 <font color=#808080>reveiver data</font> 文件（可參考 *sponsors_invite* 撰寫）
 ![](https://i.imgur.com/Trf5AbK.png)
+
 - 使用 <font color=#808080>render_mail</font> 輸出信件內容
     ```
     render_mail templates/sponsorship/spam_sponsors_2020 examples/sponsorship/spam_sponsors_2020.json
@@ -33,9 +35,11 @@
         render_mail --separator '-' <TEMPLATE_PATH> <RECEIVER_DATA>
         ```
 - 完成後會在目錄下建立一個 *mails_to_sent* 的資料夾，內有以receiver_email 為檔名之檔案，確認輸出無誤
+- 若為 HTML 格式的信件會帶有 `.html` 的副檔名；若為純文字的信件則會帶有 `.txt` 的副檔名
 ![](https://i.imgur.com/YHD7Ycm.png)
 - 確認內文
 ![](https://i.imgur.com/gpcuZA7.png)
+
 
 
 
