@@ -4,12 +4,22 @@ import json
 import logging
 import os
 from collections import defaultdict
+from html.parser import HTMLParser
 from pathlib import Path
-from typing import DefaultDict, Dict, Sequence
+from typing import DefaultDict, Dict, List, Optional, Sequence, Tuple
 
 import click
 from jinja2 import Template
-from lxml import etree
+
+
+class HTMLCounter(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.count = 0
+
+    def handle_starttag(self, tag: str, attrs: List[Tuple[str, Optional[str]]]) -> None:
+        if tag == "html":
+            self.count += 1
 
 
 def load_template(tmpl_path: str) -> Template:
@@ -42,18 +52,13 @@ def render_all_content(
 
 def export_mails(recv_to_mail: Dict[str, str], output_path: str) -> None:
     for receiver_mail, mail_content in recv_to_mail.items():
-        if "<html>" in mail_content:
-            utf8_parser = etree.HTMLParser(encoding="utf-8")
-            fixed_html = etree.tostring(
-                etree.HTML(mail_content, parser=utf8_parser),
-                encoding="UTF-8",
-                pretty_print=True,
-                method="html",
-            )
+        parser = HTMLCounter()
+        parser.feed(mail_content)
+        if parser.count > 0:
             with open(
-                output_path / Path(receiver_mail + ".html"), "wb+"
+                output_path / Path(receiver_mail + ".html"), "w", encoding="utf-8"
             ) as output_html:
-                output_html.write(fixed_html)
+                output_html.write(mail_content)
         else:
             with open(
                 output_path / Path(receiver_mail + ".txt"), "w", encoding="utf-8"
