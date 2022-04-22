@@ -1,4 +1,16 @@
 
+## v0.7.0 (2022-04-22)
+
+### Fix
+
+- **render_mail.py**: use built-in library html.parser to check is html or not
+- **pyproject.toml**: fix lxml version
+- **pyproject.toml**: add requirement of lxml library
+
+### Feat
+
+- **render_mail.py**: Support html template
+
 ## v0.6.0 (2022-03-27)
 
 ### Fix
