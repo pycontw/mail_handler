@@ -1,22 +1,23 @@
-from invoke import task
+from invoke.context import Context
+from invoke.tasks import task
 
 from tasks.common import VENV_PREFIX
 
 
 @task
-def clean(ctx):
-    """Remove virtual environement"""
+def clean(ctx: Context) -> None:
+    """Remove virtual environment"""
     ctx.run("poetry env remove 3.7", warn=True)
 
 
 @task
-def init(ctx):
+def init(ctx: Context) -> None:
     """Install production dependencies"""
     ctx.run("poetry install --no-dev")
 
 
 @task
-def setup_pre_commit_hook(ctx):
+def setup_pre_commit_hook(ctx: Context) -> None:
     """Setup pre-commit hook to automate check before git commit and git push"""
     ctx.run("git init")
     ctx.run(
@@ -28,7 +29,7 @@ def setup_pre_commit_hook(ctx):
 
 
 @task(optional=["no-pre-commit"])
-def init_dev(ctx, no_pre_commit=False):
+def init_dev(ctx: Context, no_pre_commit: bool = False) -> None:
     """Install development dependencies and setup pre-commit hooks"""
     ctx.run("poetry install")
     if not no_pre_commit:

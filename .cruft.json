@@ -1,26 +1,27 @@
 {
-  "template": "git@github.com:Lee-W/cookiecutter-python-template.git",
-  "commit": "de3aaf4ec023a27696ee1de45838d53c72a16da6",
-  "context": {
-    "cookiecutter": {
-      "project_name": "mail handler",
-      "project_slug": "mail_handler",
-      "project_description": "Generate emails through the template and send mails.",
-      "github_username": "Lee-W",
-      "github_url": "https://github.com/pycontw/mail_handler",
-      "author_name": "Wei Lee",
-      "author_email": "weilee.rx@gmail.com",
-      "python_version": "3.7",
-      "dependency_management_tool": "poetry",
-      "default_branch": "master",
-      "use_strict_mypy_config": "n",
-      "build_pypi_package": "y",
-      "build_docker_image": "n",
-      "open_source_license": "MIT license",
-      "_template_version": "1.0.0",
-      "_template": "git@github.com:Lee-W/cookiecutter-python-template.git"
-    }
-  },
-  "directory": null,
-  "checkout": null
+    "template": "git@github.com:Lee-W/cookiecutter-python-template.git",
+    "commit": "c3fe47bcc95ce02269935885e52c7aef32c5119f",
+    "context": {
+        "cookiecutter": {
+            "project_name": "mail handler",
+            "project_slug": "mail_handler",
+            "project_description": "Generate emails through the template and send mails.",
+            "github_username": "Lee-W",
+            "github_url": "https://github.com/pycontw/mail_handler",
+            "author_name": "Wei Lee",
+            "author_email": "weilee.rx@gmail.com",
+            "python_version": "3.7",
+            "dependency_management_tool": "poetry",
+            "default_branch": "master",
+            "use_strict_mypy_config": "n",
+            "build_pypi_package": "y",
+            "build_docker_image": "n",
+            "open_source_license": "MIT license",
+            "auto_detect_update_from_cruft_template": "y",
+            "_template_version": "1.9.2",
+            "_template": "git@github.com:Lee-W/cookiecutter-python-template.git"
+        }
+    },
+    "directory": null,
+    "checkout": null
 }
