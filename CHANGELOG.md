@@ -15,7 +15,7 @@
 
 ### Fix
 
-- **send_mail.py**: rewite logic if SMTP is not configured
+- **send_mail.py**: rewrite logic if SMTP is not configured
 
 ### Feat
 

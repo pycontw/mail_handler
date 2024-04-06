@@ -43,6 +43,7 @@ repos:
         language: python
         types: [text]
         args: ["--write-changes", "--ignore-words-list", "asend"]
+        exclude: '^tests/data/'
 
   - repo: https://github.com/commitizen-tools/commitizen
     rev: v3.21.3
