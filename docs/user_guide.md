@@ -21,7 +21,7 @@
 ### 使用範例
 - 修改 <font color=#808080>template</font> 文件（可參考 *sponsors_invite.j2* 撰寫）
   - 欲使用 HTML 寄出信件，可參考 *reviewer_html.j2* 編寫
-- 修改 <font color=#808080>reveiver data</font> 文件（可參考 *sponsors_invite* 撰寫）
+- 修改 <font color=#808080>receiver data</font> 文件（可參考 *sponsors_invite* 撰寫）
 ![](https://i.imgur.com/Trf5AbK.png)
 
 - 使用 <font color=#808080>render_mail</font> 輸出信件內容
