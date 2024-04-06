@@ -1,7 +1,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=flat-square)](https://conventionalcommits.org)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Github Actions](https://github.com/pycontw/mail_handler/actions/workflows/python-check.yaml/badge.svg)](https://github.com/pycontw/mail_handler/wayback-machine-saver/actions/workflows/python-check.yaml)
+[![Github Actions](https://github.com/pycontw/mail_handler/actions/workflows/python-check.yaml/badge.svg)](https://github.com/pycontw/mail_handler/actions/workflows/python-check.yaml)
 [![PyPI Package latest release](https://img.shields.io/pypi/v/pycontw_mail_handler.svg?style=flat-square)](https://pypi.org/project/pycontw_mail_handler/)
 [![PyPI Package download count (per month)](https://img.shields.io/pypi/dm/pycontw_mail_handler?style=flat-square)](https://pypi.org/project/pycontw_mail_handler/)
 [![Supported versions](https://img.shields.io/pypi/pyversions/pycontw_mail_handler.svg?style=flat-square)](https://pypi.org/project/pycontw_mail_handler/)
@@ -161,4 +161,4 @@ See [Contributing](contributing.md)
 
 [Lee-W](https://github.com/Lee-W)
 
-Created from [Lee-W/cookiecutter-python-template](https://github.com/Lee-W/cookiecutter-python-template/tree/1.0.0) version 1.0.0
+Created from [Lee-W/cookiecutter-python-template](https://github.com/Lee-W/cookiecutter-python-template/tree/1.9.2) version 1.9.2
