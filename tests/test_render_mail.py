@@ -41,7 +41,7 @@ def test_rendered_mail_no_separator(all_mails_base_no_separator):
 
     assert result.exit_code == 0
     assert len(all_mails_base_no_separator) == len(all_mails_target)
-    assert compare_rendered_mail_all(
+    compare_rendered_mail_all(
         all_mails_target,
         base_prefix=path_pre_rendered_mails_no_separator,
         target_prefix=path_mails_to_send_no_separator,
@@ -68,7 +68,7 @@ def test_rendered_mail_no_separator_and_csv(all_mails_base_no_separatorr_and_csv
 
     assert result.exit_code == 0
     assert len(all_mails_base_no_separatorr_and_csv) == len(all_mails_target)
-    assert compare_rendered_mail_all(
+    compare_rendered_mail_all(
         all_mails_target,
         base_prefix=path_pre_rendered_mails_no_separator_and_csv,
         target_prefix=path_mails_to_send_no_separator_and_csv,
@@ -95,7 +95,7 @@ def test_rendered_mail_with_separator_dash(all_mails_base_with_separator):
 
     assert result.exit_code == 0
     assert len(all_mails_base_with_separator) == len(all_mails_target)
-    assert compare_rendered_mail_all(
+    compare_rendered_mail_all(
         all_mails_target,
         base_prefix=path_pre_rendered_mails_with_separator,
         target_prefix=path_mails_to_send_with_separator,
@@ -126,7 +126,7 @@ def test_rendered_mail_with_separator_dash_and_csv(
 
     assert result.exit_code == 0
     assert len(all_mails_base_with_separator_and_csv) == len(all_mails_target)
-    assert compare_rendered_mail_all(
+    compare_rendered_mail_all(
         all_mails_target,
         base_prefix=path_pre_rendered_mails_with_separator_and_csv,
         target_prefix=path_mails_to_send_with_separator_and_csv,
