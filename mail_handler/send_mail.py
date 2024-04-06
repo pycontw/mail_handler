@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+from __future__ import annotations
+
 import json
 import logging
 import os
@@ -10,7 +12,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.utils import formataddr
 from pathlib import Path
-from typing import DefaultDict, Dict, List, Optional
+from typing import DefaultDict
 
 import click
 from typing_extensions import TypedDict
@@ -21,7 +23,7 @@ class MailConfig(TypedDict):
     port: int
 
 
-MAIL_SERVER_CONFIG: Dict[str, MailConfig] = {
+MAIL_SERVER_CONFIG: dict[str, MailConfig] = {
     "gmail": {"host": "smtp.gmail.com", "port": 465}
 }
 
@@ -29,7 +31,7 @@ MAIL_SERVER_CONFIG: Dict[str, MailConfig] = {
 logging.basicConfig(level=logging.INFO)
 
 
-def load_mails(input_dir: str) -> DefaultDict[str, List[str]]:
+def load_mails(input_dir: str) -> DefaultDict[str, list[str]]:
     addr_to_content = defaultdict(list)
     for filename in os.listdir(input_dir):
         with open(f"{input_dir}/{filename}", "r", encoding="utf-8") as input_file:
@@ -50,10 +52,10 @@ def load_mails(input_dir: str) -> DefaultDict[str, List[str]]:
 def build_mail(
     receiver_addr: str,
     mail_content: str,
-    config: Dict[str, str],
+    config: dict[str, str],
     separator: str,
-    attachment_file: Optional[str] = None,
-    suffix: str = None,
+    attachment_file: str | None = None,
+    suffix: str | None = None,
     html: bool = False,
 ) -> MIMEMultipart:
     mail = MIMEMultipart()
@@ -88,7 +90,7 @@ def send_mail(
     mail: MIMEMultipart,
     user: str,
     password: str,
-    server_config: MailConfig = None,
+    server_config: MailConfig | None = None,
 ) -> None:
     if not server_config:
         server_config = MAIL_SERVER_CONFIG["gmail"]
@@ -103,7 +105,7 @@ def send_mail(
 
 def dump_mail(
     mail: MIMEMultipart,
-    suffix: Optional[str],
+    suffix: str | None,
     debug_dump_path: str = "/tmp/mail_handler",
 ) -> None:
     if suffix:
@@ -137,13 +139,12 @@ def main(
     config_path: str,
     debug: bool,
     separator: str,
-    attachment_file: Optional[str] = None,
+    attachment_file: str | None = None,
 ) -> None:
     if click.confirm(
         f'You are about to send the mails under "{mails_path}". Do you want to continue?',
         abort=True,
     ):
-
         with open(config_path, "r", encoding="utf-8") as config_file:
             config = json.load(config_file)
 
