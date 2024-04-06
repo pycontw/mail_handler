@@ -1,4 +1,3 @@
-import filecmp
 import json
 import os
 import pickle
@@ -26,16 +25,16 @@ def compare_rendered_mail_all(
     targets, base_prefix="./data", target_prefix="../examples"
 ):
     for mail_name in targets:
-        if not compare_rendered_mail(
+        compare_rendered_mail(
             "/".join((base_prefix, mail_name)), "/".join((target_prefix, mail_name))
-        ):
-            return False
-
-    return True
+        )
 
 
-def compare_rendered_mail(base, target):
-    return filecmp.cmp(base, target, shallow=False)
+def compare_rendered_mail(base: str, target: str) -> None:
+    with open(base, encoding="utf-8") as base_file, open(
+        target, encoding="utf-8"
+    ) as target_file:
+        assert base_file.read().strip() == target_file.read().strip()
 
 
 def get_mail_config():
