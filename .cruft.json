@@ -10,7 +10,7 @@
             "github_url": "https://github.com/pycontw/mail_handler",
             "author_name": "Wei Lee",
             "author_email": "weilee.rx@gmail.com",
-            "python_version": "3.7",
+            "python_version": "3.8",
             "dependency_management_tool": "poetry",
             "default_branch": "master",
             "use_strict_mypy_config": "n",
