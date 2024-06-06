@@ -121,7 +121,7 @@ typing-extensions = "^4.1.0"
 # task management
 invoke = "^2.2.0"
 # test
-pytest = "^8.0.0"
+pytest = "^8.2.2"
 pytest-cov = "^2.8.1"
 pytest-mock = "^3.0.0"
 coverage = {extras = ["toml"], version = "^7.4.1"}
