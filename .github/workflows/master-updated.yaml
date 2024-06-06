@@ -48,7 +48,7 @@ jobs:
           inv doc.build
 
       - name: Push documentation to Github Page
-        uses: peaceiris/actions-gh-pages@v3.8.0
+        uses: peaceiris/actions-gh-pages@v4.0.0
         with:
           personal_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           publish_branch: gh-pages
