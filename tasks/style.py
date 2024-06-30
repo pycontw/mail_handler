@@ -7,7 +7,7 @@ from tasks.common import COMMON_TARGETS_AS_STR, VENV_PREFIX
 @task
 def ruff(ctx: Context) -> None:
     """Check style through ruff"""
-    ctx.run(f"{VENV_PREFIX} ruff {COMMON_TARGETS_AS_STR}")
+    ctx.run(f"{VENV_PREFIX} ruff check {COMMON_TARGETS_AS_STR}")
 
 
 @task
