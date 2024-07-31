@@ -115,7 +115,7 @@ tox = "^4.16.0"
 # style
 ruff = "^0.5.5"
 black = ">=24.1.1"
-mypy = "^1.11.0"
+mypy = "^1.11.1"
 # security
 bandit = "^1.7.9"
 pip-audit = "^2.4.5"
